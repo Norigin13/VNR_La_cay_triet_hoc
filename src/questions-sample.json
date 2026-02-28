@@ -1,0 +1,62 @@
+[
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "2 + 3 bằng bao nhiêu?",
+    "A": "4",
+    "B": "5",
+    "C": "6",
+    "D": "7",
+    "dap_an_dung": "B",
+    "id": "1"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Chiến thắng Bạch Đằng chống quân Nam Hán diễn ra vào năm nào?",
+    "A": "938",
+    "B": "968",
+    "C": "1010",
+    "D": "1258",
+    "dap_an_dung": "A",
+    "id": "2"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Kinh đô Thăng Long được dời về từ Hoa Lư vào năm nào?",
+    "A": "1009",
+    "B": "1010",
+    "C": "1015",
+    "D": "1020",
+    "dap_an_dung": "B",
+    "id": "3"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Trận Điện Biên Phủ trên cạn kết thúc vào năm nào?",
+    "A": "1945",
+    "B": "1950",
+    "C": "1954",
+    "D": "1975",
+    "dap_an_dung": "C",
+    "id": "4"
+  },
+  {
+    "cau_hoi_kho": true,
+    "noi_dung": "Ai là người soạn \"Bình Ngô đại cáo\"?",
+    "A": "Nguyễn Trãi",
+    "B": "Lê Lợi",
+    "C": "Trần Hưng Đạo",
+    "D": "Ngô Quyền",
+    "dap_an_dung": "A",
+    "id": "5"
+  },
+  {
+    "cau_hoi_kho": true,
+    "noi_dung": "Chiến dịch Hồ Chí Minh toàn thắng vào ngày nào?",
+    "A": "19/8/1945",
+    "B": "30/4/1975",
+    "C": "7/5/1954",
+    "D": "2/9/1945",
+    "dap_an_dung": "B",
+    "id": "6"
+  }
+]
