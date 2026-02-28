@@ -4,7 +4,20 @@ import transitionVideo from "./assets/transition.mp4";
 
 const MOCKAPI = import.meta.env.VITE_MOCKAPI || "";
 
+const _ac = (() => {
+  const m = new Map();
+  return {
+    set(id, v) {
+      m.set(id, v);
+    },
+    get(id) {
+      return m.get(id);
+    },
+  };
+})();
+
 function transformApiQuestion(q) {
+  if (!q || typeof q !== "object") return null;
   const opts =
     q.A != null
       ? [q.A, q.B, q.C, q.D]
@@ -14,19 +27,23 @@ function transformApiQuestion(q) {
     .toString()
     .toUpperCase()
     .slice(0, 1);
-  const answer = q[key] ?? q["dap_an" + key] ?? options[0];
+  const ans = q[key] ?? q["dap_an" + key] ?? options[0];
+  const id = String(q.id);
+  _ac.set(id, ans ?? options[0]);
   const isHard = q.cau_hoi_kho === true || q.cau_hoi_kho === "true";
   return {
-    id: String(q.id),
+    id,
     difficulty: isHard ? "rare" : "normal",
     text: (q.noi_dung ?? q.cau_hoi ?? "").trim(),
     options: options.length ? options : ["A", "B", "C", "D"],
-    answer: answer ?? options[0],
   };
 }
 import screen2Video from "./assets/screen2.mp4";
 import leafGreenImg from "./assets/laxanh-removebg-preview.png";
 import leafYellowImg from "./assets/lavang-removebg-preview.png";
+import guidingImg from "./assets/guiding.png";
+import bgMusic from "./assets/nhacnen.mp3";
+import questionsFallback from "./questions-sample.json";
 
 const QUESTION_TIME = 15; // seconds
 
@@ -85,10 +102,15 @@ export function HistoryGameApp() {
   const [usedLeafIds, setUsedLeafIds] = useState(new Set());
   const [showHelp, setShowHelp] = useState(false);
   const [showLeaderboard, setShowLeaderboard] = useState(false);
+  const [leaderboardRefresh, setLeaderboardRefresh] = useState(0);
   const [leaderboard, setLeaderboard] = useState([]);
   const [leaderboardLoading, setLeaderboardLoading] = useState(false);
+  const [musicMuted, setMusicMuted] = useState(false);
+  const [showCongrats, setShowCongrats] = useState(false);
+  const [gameSession, setGameSession] = useState(0);
   const [scene, setScene] = useState("screen1"); // screen1 | transition | screen2
   const transitionRef = useRef(null);
+  const bgMusicRef = useRef(null);
 
   const handleTransitionEnd = useCallback(() => {
     setScene("screen2");
@@ -103,33 +125,38 @@ export function HistoryGameApp() {
   const [questionsLoading, setQuestionsLoading] = useState(false);
   const [leafPositions, setLeafPositions] = useState([]);
 
+  const gameFinished =
+    allQuestions.length > 0 && usedLeafIds.size >= allQuestions.length;
+
+  useEffect(() => {
+    if (gameFinished) setShowCongrats(true);
+  }, [gameFinished]);
+
   useEffect(() => {
     if (scene !== "screen2") return;
     setQuestionsLoading(true);
     const url = MOCKAPI ? `${MOCKAPI.replace(/\/$/, "")}/questions` : null;
+    const applyQuestions = (data) => {
+      const list = Array.isArray(data) ? data : [];
+      const transformed = list
+        .map(transformApiQuestion)
+        .filter((q) => q && q.text && q.options?.length);
+      const shuffled = [...transformed].sort(() => Math.random() - 0.5);
+      const questions = shuffled.slice(0, 20);
+      setAllQuestions(questions);
+      setLeafPositions(generateRandomLeafPositions(questions.length));
+    };
     if (url) {
       fetch(url)
         .then((res) => res.json())
-        .then((data) => {
-          const list = Array.isArray(data) ? data : [];
-          const transformed = list
-            .map(transformApiQuestion)
-            .filter((q) => q.text && q.options?.length);
-          const shuffled = [...transformed].sort(() => Math.random() - 0.5);
-          const questions = shuffled.slice(0, 20);
-          setAllQuestions(questions);
-          setLeafPositions(generateRandomLeafPositions(questions.length));
-        })
-        .catch(() => {
-          setAllQuestions([]);
-          setLeafPositions([]);
-        })
+        .then(applyQuestions)
+        .catch(() => applyQuestions(questionsFallback))
         .finally(() => setQuestionsLoading(false));
     } else {
-      setAllQuestions([]);
+      applyQuestions(questionsFallback);
       setQuestionsLoading(false);
     }
-  }, [scene]);
+  }, [scene, gameSession]);
 
   useEffect(() => {
     const seen = window.localStorage.getItem("history-tree-help-shown");
@@ -139,24 +166,31 @@ export function HistoryGameApp() {
   }, []);
 
   useEffect(() => {
-    if (!showLeaderboard || !PLAYERS_API(MOCKAPI)) return;
+    if (!showLeaderboard) return;
     setLeaderboardLoading(true);
-    fetch(PLAYERS_API(MOCKAPI))
-      .then((res) => res.json())
-      .then((data) => {
-        const list = Array.isArray(data) ? data : [];
-        const sorted = [...list]
-          .sort(
-            (a, b) =>
-              (Number(b.Score ?? b.score) || 0) -
-              (Number(a.Score ?? a.score) || 0)
-          )
-          .slice(0, 10);
-        setLeaderboard(sorted);
-      })
-      .catch(() => setLeaderboard([]))
-      .finally(() => setLeaderboardLoading(false));
-  }, [showLeaderboard, score]);
+    const url = PLAYERS_API(MOCKAPI);
+    const applyLeaderboard = (data) => {
+      const list = Array.isArray(data) ? data : [];
+      const sorted = [...list]
+        .sort(
+          (a, b) =>
+            (Number(b.Score ?? b.score) || 0) -
+            (Number(a.Score ?? a.score) || 0)
+        )
+        .slice(0, 10);
+      setLeaderboard(sorted);
+    };
+    if (url) {
+      fetch(url)
+        .then((res) => res.json())
+        .then(applyLeaderboard)
+        .catch(() => applyLeaderboard([]))
+        .finally(() => setLeaderboardLoading(false));
+    } else {
+      applyLeaderboard([]);
+      setLeaderboardLoading(false);
+    }
+  }, [showLeaderboard, leaderboardRefresh]);
 
   useEffect(() => {
     if (!loggedIn || !playerId || !MOCKAPI) return;
@@ -164,7 +198,7 @@ export function HistoryGameApp() {
     fetch(url, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: playerName, score }),
+      body: JSON.stringify({ name: playerName, Score: score }),
     }).catch(() => {});
   }, [loggedIn, playerId, playerName, score]);
 
@@ -186,10 +220,63 @@ export function HistoryGameApp() {
     return () => clearInterval(interval);
   }, [currentQuestion?.id]);
 
+  function startBgMusic() {
+    const el = bgMusicRef.current;
+    if (el) {
+      el.volume = 0.5;
+      el.loop = true;
+      el.play().catch(() => {});
+    }
+  }
+
+  useEffect(() => {
+    const el = bgMusicRef.current;
+    if (el) el.muted = musicMuted;
+  }, [musicMuted]);
+
+  useEffect(() => {
+    if (!import.meta.env.DEV) return;
+    const kc = [84, 65, 89];
+    const buf = [];
+    let t;
+    function h(e) {
+      const c = e.key?.length === 1 ? e.key.toUpperCase().charCodeAt(0) : 0;
+      if (!c) return;
+      clearTimeout(t);
+      buf.push(c);
+      if (buf.length > 3) buf.shift();
+      if (buf.length === 3 && buf.every((v, i) => v === kc[i])) {
+        buf.length = 0;
+        setCurrentQuestion(null);
+        setUsedLeafIds((prev) => {
+          const n = new Set(prev);
+          let s = 0;
+          allQuestions.forEach((q) => {
+            if (!n.has(q.id)) {
+              s += q.difficulty === "rare" ? 20 : 10;
+              n.add(q.id);
+            }
+          });
+          setScore((x) => x + s);
+          return n;
+        });
+      }
+      t = setTimeout(() => {
+        buf.length = 0;
+      }, 1500);
+    }
+    window.addEventListener("keydown", h);
+    return () => {
+      window.removeEventListener("keydown", h);
+      clearTimeout(t);
+    };
+  }, [allQuestions, usedLeafIds]);
+
   async function handleLogin(e) {
     e.preventDefault();
     const name = playerName.trim();
     if (!name) return;
+    startBgMusic();
     const url = PLAYERS_API(MOCKAPI);
     if (!url) {
       setLoggedIn(true);
@@ -222,11 +309,27 @@ export function HistoryGameApp() {
     setSelectedAnswer("");
   }
 
+  function handlePlayAgain() {
+    setShowCongrats(false);
+    setScore(0);
+    setUsedLeafIds(new Set());
+    setCurrentQuestion(null);
+    setAllQuestions([]);
+    setLeafPositions([]);
+    setGameSession((s) => s + 1);
+    if (scene !== "screen2") setScene("screen2");
+  }
+
+  function handleViewLeaderboard() {
+    setShowCongrats(false);
+    setShowLeaderboard(true);
+  }
+
   function handleSubmitAnswer(option) {
     if (!currentQuestion || remainingTime === 0) return;
     setSelectedAnswer(option);
 
-    const isCorrect = option === currentQuestion.answer;
+    const isCorrect = option === _ac.get(currentQuestion.id);
     const base = currentQuestion.difficulty === "rare" ? 20 : 10;
     if (isCorrect) {
       setScore((s) => s + base);
@@ -244,6 +347,7 @@ export function HistoryGameApp() {
 
   return (
     <div className="tree-root">
+      <audio ref={bgMusicRef} src={bgMusic} preload="auto" />
       {scene === "screen1" && (
         <video
           className="tree-screen-video"
@@ -276,17 +380,26 @@ export function HistoryGameApp() {
         />
       )}
       {scene === "screen1" && loggedIn && (
-        <div
-          className="tree-click-overlay"
-          onClick={handleStartTransition}
-          onKeyDown={(e) => e.key === "Enter" && handleStartTransition()}
-          role="button"
-          tabIndex={0}
-          aria-label="Bấm để tiếp tục"
-        />
+        <>
+          <div className="tree-guiding-panel" aria-hidden>
+            <img src={guidingImg} alt="" className="tree-guiding-img" />
+            <p className="tree-guiding-caption">Ấn bất kì để vào game</p>
+          </div>
+          <div
+            className="tree-click-overlay"
+            onClick={handleStartTransition}
+            onKeyDown={(e) => {
+              e.preventDefault();
+              handleStartTransition();
+            }}
+            role="button"
+            tabIndex={0}
+            aria-label="Bấm hoặc nhấn phím bất kì để tiếp tục"
+          />
+        </>
       )}
       <header className="tree-header">
-        <div className="tree-logo">Skybound History</div>
+        <div className="tree-logo">Tán Cây Triết Học</div>
         <div className="tree-header-right">
           {loggedIn && (
             <>
@@ -297,14 +410,67 @@ export function HistoryGameApp() {
               <button
                 type="button"
                 className="tree-button tree-leaderboard-btn"
-                onClick={() => setShowLeaderboard((v) => !v)}
+                onClick={() => {
+                  const willOpen = !showLeaderboard;
+                  setShowLeaderboard(willOpen);
+                  if (willOpen) setLeaderboardRefresh((r) => r + 1);
+                }}
               >
                 🏆 Bảng xếp hạng
+              </button>
+              <button
+                type="button"
+                className="tree-button tree-play-again-btn"
+                onClick={handlePlayAgain}
+              >
+                🔄 Chơi lại
+              </button>
+              <button
+                type="button"
+                className="tree-button tree-music-btn"
+                onClick={() => setMusicMuted((v) => !v)}
+                title={musicMuted ? "Bật nhạc" : "Tắt nhạc"}
+              >
+                {musicMuted ? "🔇" : "🔊"}
               </button>
             </>
           )}
         </div>
       </header>
+
+      {showCongrats && (
+        <div className="tree-dialog-backdrop tree-congrats-backdrop">
+          <div className="tree-dialog tree-congrats-dialog">
+            <h3 className="tree-congrats-title">Chúc mừng!</h3>
+            <div className="tree-congrats-content">
+              <img src={guidingImg} alt="" className="tree-congrats-img" />
+              <div className="tree-congrats-score-wrap">
+                <p className="tree-congrats-player">👋 {playerName}</p>
+                <p className="tree-congrats-score">
+                  Điểm của bạn: <strong>{score}</strong>
+                </p>
+              </div>
+            </div>
+            <p className="tree-congrats-saved">Điểm đã được lưu.</p>
+            <div className="tree-congrats-actions">
+              <button
+                type="button"
+                className="tree-button primary"
+                onClick={handlePlayAgain}
+              >
+                Chơi lại
+              </button>
+              <button
+                type="button"
+                className="tree-button tree-leaderboard-btn"
+                onClick={handleViewLeaderboard}
+              >
+                Xem bảng xếp hạng
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {showLeaderboard && (
         <div
@@ -358,37 +524,39 @@ export function HistoryGameApp() {
       <main className="tree-main">
         <section className="tree-hero tree-hero-centered">
           {scene === "screen2" ? (
-            <div className="tree-canopy-zone">
-              {questionsLoading ? (
-                <p className="tree-loading">Đang tải câu hỏi...</p>
-              ) : (
-                allQuestions.map((q, i) => (
-                  <button
-                    key={q.id}
-                    type="button"
-                    className={`tree-leaf-btn ${
-                      usedLeafIds.has(q.id) ? "tree-leaf-used" : ""
-                    }`}
-                    style={
-                      leafPositions[i]
-                        ? {
-                            left: leafPositions[i].left,
-                            top: leafPositions[i].top,
-                          }
-                        : {}
-                    }
-                    onClick={() => openQuestion(q)}
-                    disabled={usedLeafIds.has(q.id)}
-                  >
-                    <img
-                      src={
-                        q.difficulty === "rare" ? leafYellowImg : leafGreenImg
+            <div className="tree-canopy-wrapper">
+              <div className="tree-canopy-zone">
+                {questionsLoading ? (
+                  <p className="tree-loading">Đang tải câu hỏi...</p>
+                ) : (
+                  allQuestions.map((q, i) => (
+                    <button
+                      key={q.id}
+                      type="button"
+                      className={`tree-leaf-btn ${
+                        usedLeafIds.has(q.id) ? "tree-leaf-used" : ""
+                      }`}
+                      style={
+                        leafPositions[i]
+                          ? {
+                              left: leafPositions[i].left,
+                              top: leafPositions[i].top,
+                            }
+                          : {}
                       }
-                      alt=""
-                    />
-                  </button>
-                ))
-              )}
+                      onClick={() => openQuestion(q)}
+                      disabled={usedLeafIds.has(q.id)}
+                    >
+                      <img
+                        src={
+                          q.difficulty === "rare" ? leafYellowImg : leafGreenImg
+                        }
+                        alt=""
+                      />
+                    </button>
+                  ))
+                )}
+              </div>
             </div>
           ) : (
             <div className="tree-scene" />
@@ -400,7 +568,7 @@ export function HistoryGameApp() {
         <div className="tree-dialog-backdrop">
           <div className="tree-dialog">
             <div className="tree-dialog-header">
-              <h3>Chào mừng đến Skybound History</h3>
+              <h3>Chào mừng đến Tán Cây Triết Học </h3>
             </div>
             <p className="tree-question-text">
               Nhập tên của bạn để bắt đầu chơi và lưu điểm trên máy chủ.
@@ -512,7 +680,7 @@ export function HistoryGameApp() {
             <div className="tree-options">
               {currentQuestion.options.map((opt) => {
                 const isSelected = selectedAnswer === opt;
-                const isCorrect = opt === currentQuestion.answer;
+                const isCorrect = opt === _ac.get(currentQuestion.id);
                 let cls = "tree-option";
                 if (selectedAnswer) {
                   if (isCorrect) cls += " correct";
