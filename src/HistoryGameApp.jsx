@@ -1,8 +1,25 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import screen1Video from "./assets/screen1.mp4";
-import transitionVideo from "./assets/transition.mp4";
+import guidingImg from "./assets/guiding.png";
+import bgMusic from "./assets/nhacnen.mp3";
+import mainBgImg from "./assets/main.jpg";
+import leafGreenImg from "./assets/laxanh-removebg-preview.png";
+import leafYellowImg from "./assets/lavang-removebg-preview.png";
+import flowerImg from "./assets/flower.png";
+import {
+  LEAF_POSITIONS,
+  FRAME_WIDTH,
+  FRAME_HEIGHT,
+  FLOWER_POSITIONS,
+} from "./leaf-positions";
+import questionsFallback from "./questions-sample.json";
 
 const MOCKAPI = import.meta.env.VITE_MOCKAPI || "";
+const QUESTION_TIME = 15;
+
+// 'figma' = nền Figma | 'image' = ảnh main.jpg
+const TREE_BACKGROUND = "figma";
+const MAX_QUESTIONS = LEAF_POSITIONS.length; // 115 lá theo vị trí Figma
 
 const _ac = (() => {
   const m = new Map();
@@ -38,64 +55,142 @@ function transformApiQuestion(q) {
     options: options.length ? options : ["A", "B", "C", "D"],
   };
 }
-import screen2Video from "./assets/screen2.mp4";
-import leafGreenImg from "./assets/laxanh-removebg-preview.png";
-import leafYellowImg from "./assets/lavang-removebg-preview.png";
-import guidingImg from "./assets/guiding.png";
-import bgMusic from "./assets/nhacnen.mp3";
-import questionsFallback from "./questions-sample.json";
-
-const QUESTION_TIME = 15; // seconds
-
-const CANOPY_WIDTH = 800;
-const CANOPY_HEIGHT = 580;
-const LEAF_SIZE = 48;
-/** Khoảng cách tối thiểu giữa các lá: 1–2cm ≈ 38–76px, dùng 50px */
-const MIN_LEAF_GAP = 50;
-
-function generateRandomLeafPositions(count) {
-  const positions = [];
-  const maxLeft = CANOPY_WIDTH - LEAF_SIZE;
-  const maxTop = CANOPY_HEIGHT - LEAF_SIZE;
-  const maxAttempts = 800;
-
-  for (let i = 0; i < count; i++) {
-    let pos = null;
-    for (let attempt = 0; attempt < maxAttempts; attempt++) {
-      const candidate = {
-        left: Math.random() * maxLeft,
-        top: Math.random() * maxTop,
-      };
-      const cx = candidate.left + LEAF_SIZE / 2;
-      const cy = candidate.top + LEAF_SIZE / 2;
-      const tooClose = positions.some((p) => {
-        const pcx = p.left + LEAF_SIZE / 2;
-        const pcy = p.top + LEAF_SIZE / 2;
-        const dx = cx - pcx;
-        const dy = cy - pcy;
-        return Math.sqrt(dx * dx + dy * dy) < MIN_LEAF_GAP;
-      });
-      if (!tooClose) {
-        pos = candidate;
-        break;
-      }
-    }
-    positions.push(
-      pos ?? { left: Math.random() * maxLeft, top: Math.random() * maxTop }
-    );
-  }
-  return positions;
-}
 
 const PLAYERS_API = (base) =>
   base ? `${base.replace(/\/$/, "")}/players` : "";
 
+const FAKE_LEAF_MESSAGES = [
+  "Chúc bạn may mắn lần sau! 🍀",
+  "Lần sau nhé! 💪",
+  "Thử vận may lần khác! 🌟",
+  "Cố lên, lần sau chắc chắn! ✨",
+  "Hẹn gặp lại ở lá khác! 🍃",
+];
+
+function createFakeQuestion(index) {
+  const msg =
+    FAKE_LEAF_MESSAGES[index % FAKE_LEAF_MESSAGES.length];
+  return {
+    id: `fake-${index}`,
+    text: msg,
+    options: ["OK"],
+    isFake: true,
+    difficulty: "normal",
+  };
+}
+
+const FIGMA_EMBED_URL =
+  "https://embed.figma.com/proto/dnX2BTrTQ810rkLJ7zfiRZ/Untitled?node-id=6-11&p=f&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&embed-host=share&hide-ui=1";
+
+function TreeFrame({
+  questions,
+  usedLeafIds,
+  onLeafClick,
+  questionsLoading,
+  containerRef,
+  backgroundMode = "figma",
+}) {
+  const displayCount = Math.min(questions.length, LEAF_POSITIONS.length);
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    const el = containerRef?.current;
+    if (!el) return;
+    const update = () => {
+      const w = el.clientWidth;
+      const h = el.clientHeight;
+      const sx = w / FRAME_WIDTH;
+      const sy = h / FRAME_HEIGHT;
+      setScale(Math.max(sx, sy));
+    };
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [containerRef]);
+
+  return (
+    <div
+      className="tree-frame tree-frame-figma"
+      style={{
+        width: FRAME_WIDTH,
+        height: FRAME_HEIGHT,
+        minWidth: FRAME_WIDTH,
+        minHeight: FRAME_HEIGHT,
+        transform: `scale(${scale})`,
+        transformOrigin: "top center",
+      }}
+    >
+      {backgroundMode === "image" && (
+        <img
+          className="tree-frame-background"
+          src={mainBgImg}
+          alt=""
+          style={{
+            position: "absolute",
+            left: 0,
+            top: 0,
+            width: FRAME_WIDTH,
+            height: FRAME_HEIGHT,
+            objectFit: "cover",
+            zIndex: 0,
+          }}
+        />
+      )}
+      <iframe
+        className="tree-frame-iframe"
+        src={FIGMA_EMBED_URL}
+        title="Cây triết học - Figma"
+        style={{
+          position: "absolute",
+          left: 0,
+          top: 0,
+          width: "100%",
+          height: "100%",
+          border: "none",
+          pointerEvents: "none",
+        }}
+      />
+      <div className="tree-frame-overlay" aria-hidden="true">
+        {questionsLoading ? (
+          <p className="tree-loading tree-frame-loading">Đang tải câu hỏi...</p>
+        ) : (
+          displayCount > 0 &&
+          LEAF_POSITIONS.slice(0, displayCount).map((pos, i) => {
+            const q = questions[i];
+            const used = q && usedLeafIds.has(q.id);
+            return (
+              <React.Fragment key={q?.id ?? i}>
+                <button
+                  type="button"
+                  className={`tree-frame-leaf ${used ? "tree-leaf-used" : ""}`}
+                  style={{
+                    left: pos.left,
+                    top: pos.top,
+                    width: pos.width,
+                    height: pos.height,
+                  }}
+                  onClick={() => q && onLeafClick(q)}
+                  title={used ? "Đã chơi" : "Chọn câu hỏi"}
+                />
+              </React.Fragment>
+            );
+          })
+        )}
+      </div>
+    </div>
+  );
+}
+
 export function HistoryGameApp() {
-  const [playerName, setPlayerName] = useState("");
-  const [playerId, setPlayerId] = useState(null);
-  const [loggedIn, setLoggedIn] = useState(false);
+  const playerName = "Người chơi";
+  const [scene, setScene] = useState("screen1");
+  const bgMusicRef = useRef(null);
+  const preloadedRef = useRef(false);
+  const treeFrameContainerRef = useRef(null);
+  const [musicMuted, setMusicMuted] = useState(false);
+
   const [score, setScore] = useState(0);
-  const [nameSaving, setNameSaving] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [remainingTime, setRemainingTime] = useState(QUESTION_TIME);
   const [selectedAnswer, setSelectedAnswer] = useState("");
@@ -105,46 +200,81 @@ export function HistoryGameApp() {
   const [leaderboardRefresh, setLeaderboardRefresh] = useState(0);
   const [leaderboard, setLeaderboard] = useState([]);
   const [leaderboardLoading, setLeaderboardLoading] = useState(false);
-  const [musicMuted, setMusicMuted] = useState(false);
   const [showCongrats, setShowCongrats] = useState(false);
   const [gameSession, setGameSession] = useState(0);
-  const [scene, setScene] = useState("screen1"); // screen1 | transition | screen2
-  const transitionRef = useRef(null);
-  const bgMusicRef = useRef(null);
-
-  const handleTransitionEnd = useCallback(() => {
-    setScene("screen2");
-  }, []);
-
-  const handleStartTransition = useCallback(() => {
-    if (scene !== "screen1" || !loggedIn) return;
-    setScene("transition");
-  }, [scene, loggedIn]);
-
   const [allQuestions, setAllQuestions] = useState([]);
   const [questionsLoading, setQuestionsLoading] = useState(false);
-  const [leafPositions, setLeafPositions] = useState([]);
 
-  const gameFinished =
-    allQuestions.length > 0 && usedLeafIds.size >= allQuestions.length;
+  const handleStartTransition = useCallback(() => {
+    if (scene !== "screen1") return;
+    setScene("screen2");
+  }, [scene]);
+
+  function startBgMusic() {
+    const el = bgMusicRef.current;
+    if (el) {
+      el.volume = 0.5;
+      el.loop = true;
+      el.play().catch(() => {});
+    }
+  }
 
   useEffect(() => {
-    if (gameFinished) setShowCongrats(true);
-  }, [gameFinished]);
+    if (preloadedRef.current) return;
+    preloadedRef.current = true;
+    const sources = [screen1Video];
+    const els = sources.map((src) => {
+      const v = document.createElement("video");
+      v.preload = "auto";
+      v.muted = true;
+      v.playsInline = true;
+      v.src = src;
+      try {
+        v.load();
+      } catch {
+        // ignore
+      }
+      return v;
+    });
+    const imgs = [guidingImg, mainBgImg, leafGreenImg, leafYellowImg, flowerImg].map(
+      (src) => {
+        const im = new Image();
+        im.src = src;
+        return im;
+      }
+    );
+    return () => {
+      els.forEach((v) => {
+        try {
+          v.removeAttribute("src");
+          v.load();
+        } catch {
+          // ignore
+        }
+      });
+      imgs.forEach((im) => {
+        im.src = "";
+      });
+    };
+  }, []);
 
   useEffect(() => {
     if (scene !== "screen2") return;
-    setQuestionsLoading(true);
+    queueMicrotask(() => setQuestionsLoading(true));
     const url = MOCKAPI ? `${MOCKAPI.replace(/\/$/, "")}/questions` : null;
     const applyQuestions = (data) => {
       const list = Array.isArray(data) ? data : [];
       const transformed = list
         .map(transformApiQuestion)
         .filter((q) => q && q.text && q.options?.length);
-      const shuffled = [...transformed].sort(() => Math.random() - 0.5);
-      const questions = shuffled.slice(0, 20);
+      const realQuestions = [...transformed].sort(() => Math.random() - 0.5);
+      const fakeCount = Math.max(0, MAX_QUESTIONS - realQuestions.length);
+      const fakeQuestions = Array.from({ length: fakeCount }, (_, i) =>
+        createFakeQuestion(i)
+      );
+      const combined = [...realQuestions, ...fakeQuestions];
+      const questions = combined.sort(() => Math.random() - 0.5).slice(0, MAX_QUESTIONS);
       setAllQuestions(questions);
-      setLeafPositions(generateRandomLeafPositions(questions.length));
     };
     if (url) {
       fetch(url)
@@ -154,20 +284,20 @@ export function HistoryGameApp() {
         .finally(() => setQuestionsLoading(false));
     } else {
       applyQuestions(questionsFallback);
-      setQuestionsLoading(false);
+      queueMicrotask(() => setQuestionsLoading(false));
     }
   }, [scene, gameSession]);
 
   useEffect(() => {
     const seen = window.localStorage.getItem("history-tree-help-shown");
     if (!seen) {
-      setShowHelp(true);
+      queueMicrotask(() => setShowHelp(true));
     }
   }, []);
 
   useEffect(() => {
     if (!showLeaderboard) return;
-    setLeaderboardLoading(true);
+    queueMicrotask(() => setLeaderboardLoading(true));
     const url = PLAYERS_API(MOCKAPI);
     const applyLeaderboard = (data) => {
       const list = Array.isArray(data) ? data : [];
@@ -188,25 +318,12 @@ export function HistoryGameApp() {
         .finally(() => setLeaderboardLoading(false));
     } else {
       applyLeaderboard([]);
-      setLeaderboardLoading(false);
+      queueMicrotask(() => setLeaderboardLoading(false));
     }
   }, [showLeaderboard, leaderboardRefresh]);
 
   useEffect(() => {
-    if (!loggedIn || !playerId || !MOCKAPI) return;
-    const url = `${PLAYERS_API(MOCKAPI)}/${playerId}`;
-    fetch(url, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: playerName, Score: score }),
-    }).catch(() => {});
-  }, [loggedIn, playerId, playerName, score]);
-
-  useEffect(() => {
     if (!currentQuestion) return;
-    setRemainingTime(QUESTION_TIME);
-    setSelectedAnswer("");
-
     const interval = setInterval(() => {
       setRemainingTime((prev) => {
         if (prev <= 1) {
@@ -216,91 +333,18 @@ export function HistoryGameApp() {
         return prev - 1;
       });
     }, 1000);
-
     return () => clearInterval(interval);
-  }, [currentQuestion?.id]);
-
-  function startBgMusic() {
-    const el = bgMusicRef.current;
-    if (el) {
-      el.volume = 0.5;
-      el.loop = true;
-      el.play().catch(() => {});
-    }
-  }
+  }, [currentQuestion]);
 
   useEffect(() => {
     const el = bgMusicRef.current;
     if (el) el.muted = musicMuted;
   }, [musicMuted]);
 
-  useEffect(() => {
-    if (!import.meta.env.DEV) return;
-    const kc = [84, 65, 89];
-    const buf = [];
-    let t;
-    function h(e) {
-      const c = e.key?.length === 1 ? e.key.toUpperCase().charCodeAt(0) : 0;
-      if (!c) return;
-      clearTimeout(t);
-      buf.push(c);
-      if (buf.length > 3) buf.shift();
-      if (buf.length === 3 && buf.every((v, i) => v === kc[i])) {
-        buf.length = 0;
-        setCurrentQuestion(null);
-        setUsedLeafIds((prev) => {
-          const n = new Set(prev);
-          let s = 0;
-          allQuestions.forEach((q) => {
-            if (!n.has(q.id)) {
-              s += q.difficulty === "rare" ? 20 : 10;
-              n.add(q.id);
-            }
-          });
-          setScore((x) => x + s);
-          return n;
-        });
-      }
-      t = setTimeout(() => {
-        buf.length = 0;
-      }, 1500);
-    }
-    window.addEventListener("keydown", h);
-    return () => {
-      window.removeEventListener("keydown", h);
-      clearTimeout(t);
-    };
-  }, [allQuestions, usedLeafIds]);
-
-  async function handleLogin(e) {
-    e.preventDefault();
-    const name = playerName.trim();
-    if (!name) return;
-    startBgMusic();
-    const url = PLAYERS_API(MOCKAPI);
-    if (!url) {
-      setLoggedIn(true);
-      return;
-    }
-    setNameSaving(true);
-    try {
-      const res = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, Score: 0 }),
-      });
-      const data = await res.json();
-      setPlayerId(data.id);
-      setLoggedIn(true);
-    } catch {
-      setLoggedIn(true);
-    } finally {
-      setNameSaving(false);
-    }
-  }
-
   function openQuestion(question) {
     if (usedLeafIds.has(question.id)) return;
+    setRemainingTime(question.isFake ? 0 : QUESTION_TIME);
+    setSelectedAnswer("");
     setCurrentQuestion(question);
   }
 
@@ -315,7 +359,6 @@ export function HistoryGameApp() {
     setUsedLeafIds(new Set());
     setCurrentQuestion(null);
     setAllQuestions([]);
-    setLeafPositions([]);
     setGameSession((s) => s + 1);
     if (scene !== "screen2") setScene("screen2");
   }
@@ -326,19 +369,35 @@ export function HistoryGameApp() {
   }
 
   function handleSubmitAnswer(option) {
-    if (!currentQuestion || remainingTime === 0) return;
+    if (!currentQuestion) return;
+    if (currentQuestion.isFake) {
+      setUsedLeafIds((prev) => {
+        const n = new Set(prev);
+        n.add(currentQuestion.id);
+        if (allQuestions.length > 0 && n.size >= allQuestions.length) {
+          queueMicrotask(() => setShowCongrats(true));
+        }
+        return n;
+      });
+      closeQuestion();
+      return;
+    }
+    if (remainingTime === 0) return;
     setSelectedAnswer(option);
-
     const isCorrect = option === _ac.get(currentQuestion.id);
     const base = currentQuestion.difficulty === "rare" ? 20 : 10;
     if (isCorrect) {
       setScore((s) => s + base);
-      setUsedLeafIds((prev) => new Set(prev).add(currentQuestion.id));
-      setTimeout(closeQuestion, 800);
-    } else {
-      setUsedLeafIds((prev) => new Set(prev).add(currentQuestion.id));
-      setTimeout(closeQuestion, 800);
     }
+    setUsedLeafIds((prev) => {
+      const n = new Set(prev);
+      n.add(currentQuestion.id);
+      if (allQuestions.length > 0 && n.size >= allQuestions.length) {
+        queueMicrotask(() => setShowCongrats(true));
+      }
+      return n;
+    });
+    setTimeout(closeQuestion, 800);
   }
 
   const timeRatio = currentQuestion
@@ -350,46 +409,30 @@ export function HistoryGameApp() {
       <audio ref={bgMusicRef} src={bgMusic} preload="auto" />
       {scene === "screen1" && (
         <video
-          className="tree-screen-video"
+          className="tree-screen-video tree-scene-fade-in"
           src={screen1Video}
           autoPlay
           loop
           muted
           playsInline
+          preload="auto"
         />
       )}
-      {scene === "transition" && (
-        <video
-          ref={transitionRef}
-          className="tree-screen-video"
-          src={transitionVideo}
-          autoPlay
-          muted
-          playsInline
-          onEnded={handleTransitionEnd}
-        />
-      )}
-      {scene === "screen2" && (
-        <video
-          className="tree-screen-video"
-          src={screen2Video}
-          autoPlay
-          loop
-          muted
-          playsInline
-        />
-      )}
-      {scene === "screen1" && loggedIn && (
+      {scene === "screen1" && (
         <>
-          <div className="tree-guiding-panel" aria-hidden>
+          <div className="tree-guiding-panel tree-scene-fade-in" aria-hidden>
             <img src={guidingImg} alt="" className="tree-guiding-img" />
             <p className="tree-guiding-caption">Ấn bất kì để vào game</p>
           </div>
           <div
             className="tree-click-overlay"
-            onClick={handleStartTransition}
+            onClick={() => {
+              startBgMusic();
+              handleStartTransition();
+            }}
             onKeyDown={(e) => {
               e.preventDefault();
+              startBgMusic();
               handleStartTransition();
             }}
             role="button"
@@ -398,45 +441,6 @@ export function HistoryGameApp() {
           />
         </>
       )}
-      <header className="tree-header">
-        <div className="tree-logo">Tán Cây Triết Học</div>
-        <div className="tree-header-right">
-          {loggedIn && (
-            <>
-              <div className="tree-player">👋 {playerName}</div>
-              <div className="tree-score">
-                Điểm: <span>{score}</span>
-              </div>
-              <button
-                type="button"
-                className="tree-button tree-leaderboard-btn"
-                onClick={() => {
-                  const willOpen = !showLeaderboard;
-                  setShowLeaderboard(willOpen);
-                  if (willOpen) setLeaderboardRefresh((r) => r + 1);
-                }}
-              >
-                🏆 Bảng xếp hạng
-              </button>
-              <button
-                type="button"
-                className="tree-button tree-play-again-btn"
-                onClick={handlePlayAgain}
-              >
-                🔄 Chơi lại
-              </button>
-              <button
-                type="button"
-                className="tree-button tree-music-btn"
-                onClick={() => setMusicMuted((v) => !v)}
-                title={musicMuted ? "Bật nhạc" : "Tắt nhạc"}
-              >
-                {musicMuted ? "🔇" : "🔊"}
-              </button>
-            </>
-          )}
-        </div>
-      </header>
 
       {showCongrats && (
         <div className="tree-dialog-backdrop tree-congrats-backdrop">
@@ -498,14 +502,7 @@ export function HistoryGameApp() {
             ) : (
               <ol className="tree-leaderboard-list">
                 {leaderboard.map((p, i) => (
-                  <li
-                    key={p.id}
-                    className={
-                      p.id === playerId
-                        ? "tree-leaderboard-item current"
-                        : "tree-leaderboard-item"
-                    }
-                  >
+                  <li key={p.id} className="tree-leaderboard-item">
                     <span className="tree-leaderboard-rank">{i + 1}</span>
                     <span className="tree-leaderboard-name">
                       {p.name || "—"}
@@ -521,81 +518,24 @@ export function HistoryGameApp() {
         </div>
       )}
 
-      <main className="tree-main">
-        <section className="tree-hero tree-hero-centered">
-          {scene === "screen2" ? (
-            <div className="tree-canopy-wrapper">
-              <div className="tree-canopy-zone">
-                {questionsLoading ? (
-                  <p className="tree-loading">Đang tải câu hỏi...</p>
-                ) : (
-                  allQuestions.map((q, i) => (
-                    <button
-                      key={q.id}
-                      type="button"
-                      className={`tree-leaf-btn ${
-                        usedLeafIds.has(q.id) ? "tree-leaf-used" : ""
-                      }`}
-                      style={
-                        leafPositions[i]
-                          ? {
-                              left: leafPositions[i].left,
-                              top: leafPositions[i].top,
-                            }
-                          : {}
-                      }
-                      onClick={() => openQuestion(q)}
-                      disabled={usedLeafIds.has(q.id)}
-                    >
-                      <img
-                        src={
-                          q.difficulty === "rare" ? leafYellowImg : leafGreenImg
-                        }
-                        alt=""
-                      />
-                    </button>
-                  ))
-                )}
-              </div>
-            </div>
-          ) : (
-            <div className="tree-scene" />
-          )}
-        </section>
-      </main>
-
-      {!loggedIn && (
-        <div className="tree-dialog-backdrop">
-          <div className="tree-dialog">
-            <div className="tree-dialog-header">
-              <h3>Chào mừng đến Tán Cây Triết Học </h3>
-            </div>
-            <p className="tree-question-text">
-              Nhập tên của bạn để bắt đầu chơi và lưu điểm trên máy chủ.
-            </p>
-            <form
-              className="tree-login-form"
-              onSubmit={handleLogin}
-              style={{ flexDirection: "column", gap: 12, marginTop: 16 }}
-            >
-              <input
-                className="tree-input"
-                placeholder="Nhập tên của bạn"
-                value={playerName}
-                onChange={(e) => setPlayerName(e.target.value)}
-                disabled={nameSaving}
-                autoFocus
-              />
-              <button
-                className="tree-button primary"
-                type="submit"
-                disabled={!playerName.trim() || nameSaving}
-                style={{ width: "100%" }}
-              >
-                {nameSaving ? "Đang lưu..." : "Bắt đầu chơi"}
-              </button>
-            </form>
-          </div>
+      {scene === "screen2" && (
+        <div
+          ref={treeFrameContainerRef}
+          className="tree-frame-overlay-full tree-scene-fade-in-slow"
+          style={
+            TREE_BACKGROUND === "image"
+              ? { background: `url(${mainBgImg}) center / cover no-repeat` }
+              : { background: "#f5f5f0" }
+          }
+        >
+          <TreeFrame
+            containerRef={treeFrameContainerRef}
+            backgroundMode={TREE_BACKGROUND}
+            questions={allQuestions}
+            usedLeafIds={usedLeafIds}
+            onLeafClick={openQuestion}
+            questionsLoading={questionsLoading}
+          />
         </div>
       )}
 
@@ -626,6 +566,9 @@ export function HistoryGameApp() {
                 Mỗi lá chỉ chơi được một lần. Hết thời gian hoặc trả lời sai thì
                 lá đó cũng coi như đã dùng.
               </li>
+              <li>
+                Một số lá là lá may mắn — không có câu hỏi, chỉ nhận lời chúc.
+              </li>
             </ul>
             <button
               type="button"
@@ -655,9 +598,11 @@ export function HistoryGameApp() {
           <div className="tree-dialog">
             <div className="tree-dialog-header">
               <h3>
-                {currentQuestion.difficulty === "rare"
-                  ? "Lá vàng thử thách"
-                  : "Lá xanh"}
+                {currentQuestion.isFake
+                  ? "🍀 Lá may mắn"
+                  : currentQuestion.difficulty === "rare"
+                    ? "Lá vàng thử thách"
+                    : "Lá xanh"}
               </h3>
               <button
                 type="button"
@@ -668,21 +613,25 @@ export function HistoryGameApp() {
               </button>
             </div>
             <p className="tree-question-text">{currentQuestion.text}</p>
-
-            <div className="tree-timer-bar">
-              <div
-                className="tree-timer-fill"
-                style={{ width: `${timeRatio * 100}%` }}
-              />
-            </div>
-            <div className="tree-timer-label">Còn {remainingTime}s</div>
-
+            {!currentQuestion.isFake && (
+              <>
+                <div className="tree-timer-bar">
+                  <div
+                    className="tree-timer-fill"
+                    style={{ width: `${timeRatio * 100}%` }}
+                  />
+                </div>
+                <div className="tree-timer-label">Còn {remainingTime}s</div>
+              </>
+            )}
             <div className="tree-options">
               {currentQuestion.options.map((opt) => {
                 const isSelected = selectedAnswer === opt;
-                const isCorrect = opt === _ac.get(currentQuestion.id);
+                const isCorrect = currentQuestion.isFake
+                  ? true
+                  : opt === _ac.get(currentQuestion.id);
                 let cls = "tree-option";
-                if (selectedAnswer) {
+                if (selectedAnswer && !currentQuestion.isFake) {
                   if (isCorrect) cls += " correct";
                   else if (isSelected) cls += " wrong";
                 }
@@ -692,7 +641,10 @@ export function HistoryGameApp() {
                     type="button"
                     className={cls}
                     onClick={() => handleSubmitAnswer(opt)}
-                    disabled={!!selectedAnswer || remainingTime === 0}
+                    disabled={
+                      !currentQuestion.isFake &&
+                      (!!selectedAnswer || remainingTime === 0)
+                    }
                   >
                     {opt}
                   </button>
