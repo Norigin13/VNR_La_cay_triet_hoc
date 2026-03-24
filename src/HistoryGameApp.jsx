@@ -1,21 +1,17 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import screen1Video from "./assets/screen1.mp4";
 import guidingImg from "./assets/guiding.png";
-import bgMusic from "./assets/nhacnen.mp3";
 import mainBgImg from "./assets/main.jpg";
-import leafGreenImg from "./assets/laxanh-removebg-preview.png";
-import leafYellowImg from "./assets/lavang-removebg-preview.png";
-import flowerImg from "./assets/flower.png";
 import {
   LEAF_POSITIONS,
   FRAME_WIDTH,
   FRAME_HEIGHT,
-  FLOWER_POSITIONS,
 } from "./leaf-positions";
 import questionsFallback from "./questions-sample.json";
 
 const MOCKAPI = import.meta.env.VITE_MOCKAPI || "";
 const QUESTION_TIME = 15;
+const QUESTION_TIME_MS = QUESTION_TIME * 1000;
 
 // 'figma' = nền Figma | 'image' = ảnh main.jpg
 const TREE_BACKGROUND = "figma";
@@ -33,7 +29,7 @@ const _ac = (() => {
   };
 })();
 
-function transformApiQuestion(q) {
+function transformApiQuestion(q, idPrefix = "") {
   if (!q || typeof q !== "object") return null;
   const opts =
     q.A != null
@@ -45,7 +41,8 @@ function transformApiQuestion(q) {
     .toUpperCase()
     .slice(0, 1);
   const ans = q[key] ?? q["dap_an" + key] ?? options[0];
-  const id = String(q.id);
+  const baseId = String(q.id ?? "").trim() || Math.random().toString(36).slice(2);
+  const id = idPrefix ? `${idPrefix}-${baseId}` : baseId;
   _ac.set(id, ans ?? options[0]);
   const isHard = q.cau_hoi_kho === true || q.cau_hoi_kho === "true";
   return {
@@ -58,26 +55,6 @@ function transformApiQuestion(q) {
 
 const PLAYERS_API = (base) =>
   base ? `${base.replace(/\/$/, "")}/players` : "";
-
-const FAKE_LEAF_MESSAGES = [
-  "Chúc bạn may mắn lần sau! 🍀",
-  "Lần sau nhé! 💪",
-  "Thử vận may lần khác! 🌟",
-  "Cố lên, lần sau chắc chắn! ✨",
-  "Hẹn gặp lại ở lá khác! 🍃",
-];
-
-function createFakeQuestion(index) {
-  const msg =
-    FAKE_LEAF_MESSAGES[index % FAKE_LEAF_MESSAGES.length];
-  return {
-    id: `fake-${index}`,
-    text: msg,
-    options: ["OK"],
-    isFake: true,
-    difficulty: "normal",
-  };
-}
 
 const FIGMA_EMBED_URL =
   "https://embed.figma.com/proto/dnX2BTrTQ810rkLJ7zfiRZ/Untitled?node-id=6-11&p=f&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&embed-host=share&hide-ui=1";
@@ -172,7 +149,9 @@ function TreeFrame({
                   }}
                   onClick={() => q && onLeafClick(q)}
                   title={used ? "Đã chơi" : "Chọn câu hỏi"}
-                />
+                >
+                  {used && <span className="tree-leaf-used-mark">✓</span>}
+                </button>
               </React.Fragment>
             );
           })
@@ -185,19 +164,17 @@ function TreeFrame({
 export function HistoryGameApp() {
   const playerName = "Người chơi";
   const [scene, setScene] = useState("screen1");
-  const bgMusicRef = useRef(null);
   const preloadedRef = useRef(false);
   const treeFrameContainerRef = useRef(null);
-  const [musicMuted, setMusicMuted] = useState(false);
 
   const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(null);
-  const [remainingTime, setRemainingTime] = useState(QUESTION_TIME);
+  const [remainingMs, setRemainingMs] = useState(QUESTION_TIME_MS);
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [usedLeafIds, setUsedLeafIds] = useState(new Set());
   const [showHelp, setShowHelp] = useState(false);
   const [showLeaderboard, setShowLeaderboard] = useState(false);
-  const [leaderboardRefresh, setLeaderboardRefresh] = useState(0);
+  const [leaderboardRefresh] = useState(0);
   const [leaderboard, setLeaderboard] = useState([]);
   const [leaderboardLoading, setLeaderboardLoading] = useState(false);
   const [showCongrats, setShowCongrats] = useState(false);
@@ -209,15 +186,6 @@ export function HistoryGameApp() {
     if (scene !== "screen1") return;
     setScene("screen2");
   }, [scene]);
-
-  function startBgMusic() {
-    const el = bgMusicRef.current;
-    if (el) {
-      el.volume = 0.5;
-      el.loop = true;
-      el.play().catch(() => {});
-    }
-  }
 
   useEffect(() => {
     if (preloadedRef.current) return;
@@ -236,7 +204,7 @@ export function HistoryGameApp() {
       }
       return v;
     });
-    const imgs = [guidingImg, mainBgImg, leafGreenImg, leafYellowImg, flowerImg].map(
+    const imgs = [guidingImg, mainBgImg].map(
       (src) => {
         const im = new Image();
         im.src = src;
@@ -261,29 +229,48 @@ export function HistoryGameApp() {
   useEffect(() => {
     if (scene !== "screen2") return;
     queueMicrotask(() => setQuestionsLoading(true));
-    const url = MOCKAPI ? `${MOCKAPI.replace(/\/$/, "")}/questions` : null;
-    const applyQuestions = (data) => {
+    const base = MOCKAPI ? MOCKAPI.replace(/\/$/, "") : "";
+    const questionsUrl = base ? `${base}/questions` : "";
+    const questions2Url = base ? `${base}/questions2` : "";
+    const toQuestions = (data, prefix) => {
       const list = Array.isArray(data) ? data : [];
-      const transformed = list
-        .map(transformApiQuestion)
+      return list
+        .map((q) => transformApiQuestion(q, prefix))
         .filter((q) => q && q.text && q.options?.length);
-      const realQuestions = [...transformed].sort(() => Math.random() - 0.5);
-      const fakeCount = Math.max(0, MAX_QUESTIONS - realQuestions.length);
-      const fakeQuestions = Array.from({ length: fakeCount }, (_, i) =>
-        createFakeQuestion(i)
-      );
-      const combined = [...realQuestions, ...fakeQuestions];
-      const questions = combined.sort(() => Math.random() - 0.5).slice(0, MAX_QUESTIONS);
+    };
+    const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
+    const applyQuestions = (questionsData, questions2Data) => {
+      const primary = shuffle(toQuestions(questionsData, "q1"));
+      const secondary = shuffle(toQuestions(questions2Data, "q2"));
+      let questions = primary.slice(0, MAX_QUESTIONS);
+      if (questions.length < MAX_QUESTIONS) {
+        questions = [
+          ...questions,
+          ...secondary.slice(0, MAX_QUESTIONS - questions.length),
+        ];
+      }
+      if (questions.length === 0) {
+        questions = shuffle(toQuestions(questionsFallback, "local")).slice(
+          0,
+          MAX_QUESTIONS
+        );
+      }
       setAllQuestions(questions);
     };
-    if (url) {
-      fetch(url)
-        .then((res) => res.json())
-        .then(applyQuestions)
-        .catch(() => applyQuestions(questionsFallback))
+    if (questionsUrl) {
+      Promise.allSettled([
+        fetch(questionsUrl).then((res) => res.json()),
+        fetch(questions2Url).then((res) => res.json()),
+      ])
+        .then(([r1, r2]) => {
+          const data1 = r1.status === "fulfilled" ? r1.value : [];
+          const data2 = r2.status === "fulfilled" ? r2.value : [];
+          applyQuestions(data1, data2);
+        })
+        .catch(() => applyQuestions(questionsFallback, []))
         .finally(() => setQuestionsLoading(false));
     } else {
-      applyQuestions(questionsFallback);
+      applyQuestions(questionsFallback, []);
       queueMicrotask(() => setQuestionsLoading(false));
     }
   }, [scene, gameSession]);
@@ -324,26 +311,23 @@ export function HistoryGameApp() {
 
   useEffect(() => {
     if (!currentQuestion) return;
-    const interval = setInterval(() => {
-      setRemainingTime((prev) => {
-        if (prev <= 1) {
-          clearInterval(interval);
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
-    return () => clearInterval(interval);
+    const start = performance.now();
+    let raf = 0;
+    const tick = (now) => {
+      const elapsed = now - start;
+      const next = Math.max(0, QUESTION_TIME_MS - elapsed);
+      setRemainingMs(next);
+      if (next > 0) {
+        raf = requestAnimationFrame(tick);
+      }
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
   }, [currentQuestion]);
-
-  useEffect(() => {
-    const el = bgMusicRef.current;
-    if (el) el.muted = musicMuted;
-  }, [musicMuted]);
 
   function openQuestion(question) {
     if (usedLeafIds.has(question.id)) return;
-    setRemainingTime(question.isFake ? 0 : QUESTION_TIME);
+    setRemainingMs(QUESTION_TIME_MS);
     setSelectedAnswer("");
     setCurrentQuestion(question);
   }
@@ -370,19 +354,7 @@ export function HistoryGameApp() {
 
   function handleSubmitAnswer(option) {
     if (!currentQuestion) return;
-    if (currentQuestion.isFake) {
-      setUsedLeafIds((prev) => {
-        const n = new Set(prev);
-        n.add(currentQuestion.id);
-        if (allQuestions.length > 0 && n.size >= allQuestions.length) {
-          queueMicrotask(() => setShowCongrats(true));
-        }
-        return n;
-      });
-      closeQuestion();
-      return;
-    }
-    if (remainingTime === 0) return;
+    if (remainingMs <= 0) return;
     setSelectedAnswer(option);
     const isCorrect = option === _ac.get(currentQuestion.id);
     const base = currentQuestion.difficulty === "rare" ? 20 : 10;
@@ -401,12 +373,12 @@ export function HistoryGameApp() {
   }
 
   const timeRatio = currentQuestion
-    ? Math.max(0, remainingTime) / QUESTION_TIME
+    ? Math.max(0, remainingMs) / QUESTION_TIME_MS
     : 0;
+  const displaySeconds = Math.ceil(Math.max(0, remainingMs) / 1000);
 
   return (
     <div className="tree-root">
-      <audio ref={bgMusicRef} src={bgMusic} preload="auto" />
       {scene === "screen1" && (
         <video
           className="tree-screen-video tree-scene-fade-in"
@@ -427,12 +399,10 @@ export function HistoryGameApp() {
           <div
             className="tree-click-overlay"
             onClick={() => {
-              startBgMusic();
               handleStartTransition();
             }}
             onKeyDown={(e) => {
               e.preventDefault();
-              startBgMusic();
               handleStartTransition();
             }}
             role="button"
@@ -566,9 +536,6 @@ export function HistoryGameApp() {
                 Mỗi lá chỉ chơi được một lần. Hết thời gian hoặc trả lời sai thì
                 lá đó cũng coi như đã dùng.
               </li>
-              <li>
-                Một số lá là lá may mắn — không có câu hỏi, chỉ nhận lời chúc.
-              </li>
             </ul>
             <button
               type="button"
@@ -597,13 +564,7 @@ export function HistoryGameApp() {
         <div className="tree-dialog-backdrop">
           <div className="tree-dialog">
             <div className="tree-dialog-header">
-              <h3>
-                {currentQuestion.isFake
-                  ? "🍀 Lá may mắn"
-                  : currentQuestion.difficulty === "rare"
-                    ? "Lá vàng thử thách"
-                    : "Lá xanh"}
-              </h3>
+              <h3>Câu hỏi</h3>
               <button
                 type="button"
                 className="tree-dialog-close"
@@ -613,25 +574,19 @@ export function HistoryGameApp() {
               </button>
             </div>
             <p className="tree-question-text">{currentQuestion.text}</p>
-            {!currentQuestion.isFake && (
-              <>
-                <div className="tree-timer-bar">
-                  <div
-                    className="tree-timer-fill"
-                    style={{ width: `${timeRatio * 100}%` }}
-                  />
-                </div>
-                <div className="tree-timer-label">Còn {remainingTime}s</div>
-              </>
-            )}
+            <div className="tree-timer-bar">
+              <div
+                className="tree-timer-fill"
+                style={{ width: `${timeRatio * 100}%` }}
+              />
+            </div>
+            <div className="tree-timer-label">Còn {displaySeconds}s</div>
             <div className="tree-options">
               {currentQuestion.options.map((opt) => {
                 const isSelected = selectedAnswer === opt;
-                const isCorrect = currentQuestion.isFake
-                  ? true
-                  : opt === _ac.get(currentQuestion.id);
+                const isCorrect = opt === _ac.get(currentQuestion.id);
                 let cls = "tree-option";
-                if (selectedAnswer && !currentQuestion.isFake) {
+                if (selectedAnswer) {
                   if (isCorrect) cls += " correct";
                   else if (isSelected) cls += " wrong";
                 }
@@ -641,10 +596,7 @@ export function HistoryGameApp() {
                     type="button"
                     className={cls}
                     onClick={() => handleSubmitAnswer(opt)}
-                    disabled={
-                      !currentQuestion.isFake &&
-                      (!!selectedAnswer || remainingTime === 0)
-                    }
+                    disabled={!!selectedAnswer || remainingMs <= 0}
                   >
                     {opt}
                   </button>

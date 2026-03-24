@@ -1,0 +1,1162 @@
+[
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Lãnh tụ Nguyễn Ái Quốc mang tư cách gì khi triệu tập Hội nghị thành lập Đảng Cộng sản Việt Nam đầu năm 1930?",
+    "A": "Phái viên của Quốc tế Cộng sản có đầy đủ quyền quyết định",
+    "B": "Đại diện chính thức của tổ chức An Nam Cộng sản Đảng",
+    "C": "Khách mời danh dự của các tổ chức cộng sản trong nước",
+    "D": "Người quan sát viên của phong trào cộng sản quốc tế",
+    "dap_an_dung": "A",
+    "id": "1"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Hiệp định Giơnevơ năm 1954 là văn bản pháp lý quốc tế đầu tiên công nhận các quyền dân tộc cơ bản nào của nhân dân ba nước Đông Dương?",
+    "A": "Độc lập và tự do và dân chủ và quyền tự quyết dân tộc",
+    "B": "Độc lập và chủ quyền và thống nhất và toàn vẹn lãnh thổ",
+    "C": "Hòa bình và thống nhất và độc lập và dân chủ nhân dân",
+    "D": "Chủ quyền và tự trị và thống nhất và toàn vẹn lãnh thổ",
+    "dap_an_dung": "B",
+    "id": "2"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Theo tác phẩm Đường Kách mệnh, để đồng tâm hiệp lực và bền gan làm cách mạng thì trước hết mọi người phải nhận thức rõ điều gì?",
+    "A": "Hiểu rõ vì sao mà phải làm và vì sao ai cũng phải gánh một vai",
+    "B": "Hiểu rõ đường lối quân sự và chiến thuật du kích của Đảng ta",
+    "C": "Hiểu rõ âm mưu thâm độc của bọn thực dân Pháp và tay sai",
+    "D": "Hiểu rõ cách thức phân chia ruộng đất công bằng cho nông dân",
+    "dap_an_dung": "A",
+    "id": "3"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Theo Văn kiện Đảng, sự xung đột lợi ích giữa tư bản mới và lực lượng nào ở hương thôn đã làm thành ra tư bản cách mệnh?",
+    "A": "Tầng lớp tiểu tư sản và những người trí thức nghèo",
+    "B": "Giai cấp công nhân và giai cấp nông dân lao động",
+    "C": "Giai cấp địa chủ muốn giữ những chế độ phong kiến",
+    "D": "Tầng lớp tư sản mại bản thân đế quốc và chính quyền",
+    "dap_an_dung": "C",
+    "id": "4"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Lời kêu gọi gửi những người chân chính cách mạng yêu cầu tức khắc thành lập một tổ chức với tên gọi là gì?",
+    "A": "Đảng Cộng sản Đông Dương",
+    "B": "Đảng Cộng sản Việt Nam",
+    "C": "Đảng Lao động Việt Nam",
+    "D": "Đông Dương Cộng sản Đảng",
+    "dap_an_dung": "A",
+    "id": "5"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Việc tạm thời duy trì tổ chức Thanh niên trong quá trình tiến tới thành lập Đảng Cộng sản được giải thích mang tính chất gì?",
+    "A": "Là chiến lược lâu dài để tập hợp đông đảo thanh niên trí thức",
+    "B": "Là một thủ đoạn làm việc tạm thời trong lúc chuyển tiếp",
+    "C": "Là phương pháp đấu tranh hòa bình hợp pháp ở các đô thị",
+    "D": "Là bước đệm để tiến tới thành lập mặt trận dân chủ rộng rãi",
+    "dap_an_dung": "B",
+    "id": "6"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Sách lược của Đảng ta đối với giai cấp địa chủ trong thời kỳ đầu kháng chiến chống Pháp được xác định như thế nào?",
+    "A": "Tịch thu toàn bộ ruộng đất chia cho nông dân nghèo ngay lập tức",
+    "B": "Đẩy họ về phe đế quốc để dập tắt ảo tưởng thỏa hiệp của nông dân",
+    "C": "Vận động họ tham gia ủng hộ kháng chiến hoặc đứng trung lập",
+    "D": "Tiêu diệt ngay lập tức bằng bạo lực vũ trang triệt để ở nông thôn",
+    "dap_an_dung": "C",
+    "id": "7"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Trong phong trào vận động nông thôn, Đảng ta xác định lực lượng nào là bạn đồng minh đáng tin cậy của giai cấp công nhân?",
+    "A": "Tầng lớp trí thức tiểu tư sản",
+    "B": "Giai cấp địa chủ tham gia kháng chiến",
+    "C": "Tầng lớp trung nông các loại",
+    "D": "Tầng lớp tư sản dân tộc ở thôn quê",
+    "dap_an_dung": "C",
+    "id": "8"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Thái độ của Đảng ta đối với tầng lớp phú nông trong thời kỳ kháng chiến kiến quốc được xác định như thế nào?",
+    "A": "Tịch thu một phần tài sản để phân phát cho giai cấp cố nông",
+    "B": "Không hạn chế sự phát triển và việc làm giàu của họ",
+    "C": "Cấm tuyệt đối việc phú nông tham gia các tổ chức nông hội",
+    "D": "Đưa họ vào diện cải tạo bắt buộc như giai cấp địa chủ lớn",
+    "dap_an_dung": "B",
+    "id": "9"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Tính chất căn bản của chính quyền dân chủ nhân dân do Đảng ta lãnh đạo xây dựng là gì?",
+    "A": "Là công cụ áp bức bóc lột của giai cấp tư sản phản động",
+    "B": "Là chính quyền của dân và do dân và vì nhân dân",
+    "C": "Là chính quyền quân quản áp đặt trong thời kỳ chiến tranh",
+    "D": "Là chính quyền chuyên chính vô sản mang tính chất cực đoan",
+    "dap_an_dung": "B",
+    "id": "10"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Căn bản của vấn đề thực hiện giảm tô và giảm tức trong kháng chiến chống Pháp được Đảng ta chỉ đạo phương pháp chủ yếu là gì?",
+    "A": "Giáo dục nông dân đòi giảm đúng mức và thuyết phục chủ điền",
+    "B": "Sử dụng bạo lực quân sự ép buộc địa chủ phải chia ruộng đất ngay",
+    "C": "Dựa vào tòa án để kết tội toàn bộ địa chủ không chịu giảm tô tức",
+    "D": "Bỏ qua đấu tranh mà để địa chủ tự động ban ơn cho người nông dân",
+    "dap_an_dung": "A",
+    "id": "11"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Trước tin đồn về đàm phán do địch phao ra nhằm làm ta cầu an sơ hở, chính sách nhất quán của Đảng ta là gì?",
+    "A": "Lập tức cử phái đoàn ngoại giao đi đàm phán hòa bình ngay",
+    "B": "Đơn phương tuyên bố ngừng bắn trên toàn quốc để tỏ thiện chí",
+    "C": "Ra sức kháng chiến cho đến khi giành thắng lợi hoàn toàn",
+    "D": "Nhượng bộ một phần lãnh thổ để đổi lấy một nền hòa bình tạm thời",
+    "dap_an_dung": "C",
+    "id": "12"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Sau khi ký Hiệp định Giơnevơ năm 1954, lập trường cốt lõi của Đảng ta đối với việc thống nhất nước nhà là gì?",
+    "A": "Dùng vũ lực tiến công giải phóng miền Nam ngay lập tức",
+    "B": "Đấu tranh để thực hiện tổng tuyển cử tự do trong toàn quốc",
+    "C": "Chờ đợi sự can thiệp của Liên hợp quốc và các cường quốc lớn",
+    "D": "Chấp nhận chia cắt lâu dài hai miền Nam Bắc thành hai quốc gia",
+    "dap_an_dung": "B",
+    "id": "13"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Sau khi hòa bình lập lại ở miền Bắc, một trong những công tác cấp bách để phòng chống đói kém do thiên tai là gì?",
+    "A": "Tích cực sửa chữa đê điều và chuẩn bị lực lượng hộ đê chống lụt",
+    "B": "Chuyển toàn bộ nông dân vùng trũng lên khu vực miền núi cao",
+    "C": "Ngừng ngay các hoạt động công nghiệp để tập trung lực lượng cứu trợ",
+    "D": "Xin viện trợ khẩn cấp lượng lớn lúa gạo từ các tổ chức quốc tế",
+    "dap_an_dung": "A",
+    "id": "14"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Ba nguyên tắc cốt lõi phải nắm vững để tổ đổi công và hợp tác xã nông nghiệp hoạt động có kết quả là gì?",
+    "A": "Bắt buộc và cùng có lợi và quản lý theo mệnh lệnh hành chính",
+    "B": "Tự nguyện và cùng có lợi và quản trị một cách dân chủ",
+    "C": "Tự nguyện và bình quân chủ nghĩa và phân phối theo nhu cầu",
+    "D": "Cưỡng chế và quản trị dân chủ và ưu tiên đặc biệt cho người nghèo",
+    "dap_an_dung": "B",
+    "id": "15"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Văn kiện Đảng chỉ rõ sai lầm nghiêm trọng nhất trong quá trình thực hiện cải cách ruộng đất và chỉnh đốn tổ chức là gì?",
+    "A": "Chia đều ruộng đất cho cả giai cấp địa chủ và nông dân nghèo",
+    "B": "Không xử lý triệt để những tàn dư của chế độ phong kiến cũ",
+    "C": "Lẫn lộn giữa bạn và thù và lẫn lộn giữa quân ta và kẻ địch",
+    "D": "Phân chia sai ranh giới hành chính giữa các địa phương trong tỉnh",
+    "dap_an_dung": "C",
+    "id": "16"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Trong phong trào hợp tác hóa nông nghiệp, khâu chính trước mắt cần phải giải quyết để thúc đẩy sản xuất là gì?",
+    "A": "Đưa ngay cơ giới hóa quy mô lớn vào đồng ruộng trên cả nước",
+    "B": "Xóa bỏ hoàn toàn nền sản xuất hàng hóa tư nhân ở khu vực nông thôn",
+    "C": "Cải tạo quan hệ sản xuất kết hợp với việc cải tiến kỹ thuật",
+    "D": "Quốc hữu hóa toàn bộ ruộng đất của các hợp tác xã nông nghiệp",
+    "dap_an_dung": "C",
+    "id": "17"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Phương châm tập hợp lực lượng của Mặt trận Dân tộc giải phóng miền Nam Việt Nam được xác định như thế nào?",
+    "A": "Chỉ đoàn kết với giai cấp công nhân và giai cấp nông dân nghèo",
+    "B": "Đoàn kết bất cứ người nào có thể đoàn kết để chống Mỹ và tay sai",
+    "C": "Loại trừ hoàn toàn những người đã từng làm việc cho thực dân Pháp",
+    "D": "Chỉ tập hợp các lực lượng vũ trang cách mạng nòng cốt ở các chiến khu",
+    "dap_an_dung": "B",
+    "id": "18"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Mối quan hệ giữa cuộc vận động 3 xây và 3 chống được Đảng ta xác định như thế nào trong thời kỳ xây dựng chủ nghĩa xã hội?",
+    "A": "Là hai mặt hoàn toàn tách biệt không có tác động qua lại lẫn nhau",
+    "B": "Làm 3 chống triệt để nhằm bảo đảm cho công việc 3 xây thành công",
+    "C": "Chỉ cần làm 3 xây thì các tiêu cực tự động biến mất khỏi xã hội",
+    "D": "Phải hoàn thành 3 chống rồi mới bắt đầu tiến hành công việc 3 xây",
+    "dap_an_dung": "B",
+    "id": "19"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Trong kháng chiến chống Mỹ cứu nước, mặt trận đấu tranh nào được Đảng ta xác định có tác dụng quyết định trực tiếp?",
+    "A": "Mặt trận đấu tranh ngoại giao",
+    "B": "Mặt trận đấu tranh chính trị",
+    "C": "Mặt trận đấu tranh quân sự",
+    "D": "Mặt trận đấu tranh kinh tế",
+    "dap_an_dung": "C",
+    "id": "20"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Việc chú trọng phát huy khả năng chiến đấu và mở rộng hàng ngũ du kích mật nhằm hướng tới mục tiêu chiến lược nào?",
+    "A": "Tiến tới thực hiện vũ trang toàn dân chống giặc ngoại xâm",
+    "B": "Xây dựng các binh đoàn chủ lực cơ động quy mô cấp chiến lược",
+    "C": "Giải giáp toàn bộ lực lượng bảo an của ngụy quyền Sài Gòn",
+    "D": "Thay thế hoàn toàn bộ đội chủ lực trên các chiến trường chính",
+    "dap_an_dung": "A",
+    "id": "21"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Trong Tổng tiến công và nổi dậy Xuân Mậu Thân 1968, hướng công kích chủ yếu được xác định là ở khu vực nào?",
+    "A": "Các căn cứ quân sự vùng rừng núi hiểm trở và vùng biên giới",
+    "B": "Các tuyến đường giao thông thủy bộ huyết mạch ở khu vực nông thôn",
+    "C": "Các đô thị và nhất là những thành thị lớn tập trung đầu não địch",
+    "D": "Các vùng ven biển và khu vực đồng bằng duyên hải xa xôi",
+    "dap_an_dung": "C",
+    "id": "22"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Trong quá trình cải tạo và quản lý lưu thông phân phối lương thực thời kỳ mới, vấn đề mấu chốt nhất được xác định là gì?",
+    "A": "Kêu gọi viện trợ khẩn cấp lương thực từ các nước anh em xã hội chủ nghĩa",
+    "B": "Đẩy mạnh được sản xuất và tổ chức quản lý lưu thông thật tốt",
+    "C": "Cấm đoán hoàn toàn việc trao đổi lương thực tự do trên thị trường",
+    "D": "Dùng ngân sách nhà nước nhập khẩu lượng lớn gạo từ các nước láng giềng",
+    "dap_an_dung": "B",
+    "id": "23"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Lực lượng chính trị quốc tế nào đã đề xuất kế hoạch tiến tới lập một Mặt trận nhân dân thế giới chống Mỹ và ủng hộ Việt Nam?",
+    "A": "Đảng Cộng sản Liên Xô",
+    "B": "Đảng Cộng sản Trung Quốc",
+    "C": "Đảng Cộng sản Pháp",
+    "D": "Đảng Cộng sản Nhật Bản",
+    "dap_an_dung": "D",
+    "id": "24"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Tại Đại hội V (1982), nhân tố nào được đánh giá là bảo đảm vững chắc cho sự nghiệp bảo vệ Tổ quốc trên bán đảo Đông Dương?",
+    "A": "Quan hệ đặc biệt và liên minh chiến đấu giữa Việt Nam và Lào và Campuchia",
+    "B": "Sự viện trợ quân sự khổng lồ từ các nước tư bản phát triển trên thế giới",
+    "C": "Việc bình thường hóa quan hệ ngoại giao với các đế quốc phương Tây",
+    "D": "Khả năng tự cung tự cấp hoàn toàn về lương thực và vũ khí trang bị",
+    "dap_an_dung": "A",
+    "id": "25"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Để giải quyết căn bản vấn đề giá lương tiền trước thềm đổi mới, Đảng ta chủ trương phải điều chỉnh tiền lương dựa trên cơ sở nào?",
+    "A": "Dựa trên mức lương tối thiểu của các nước trong khu vực Đông Nam Á",
+    "B": "Dựa trên chỉ số giá cả và chỉ số sinh hoạt thực tế của người dân",
+    "C": "Dựa trên khả năng in tiền và phát hành tiền của hệ thống ngân hàng",
+    "D": "Dựa trên lượng hàng hóa tiêu dùng nhập khẩu từ các nước tư bản",
+    "dap_an_dung": "B",
+    "id": "26"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Quan điểm nhất quán của Đảng và Nhà nước ta về chế độ sở hữu đất đai được quy định trong Luật Đất đai là gì?",
+    "A": "Đất đai thuộc quyền sở hữu riêng của các hợp tác xã nông nghiệp",
+    "B": "Đất đai thuộc sở hữu của tư nhân và các tập đoàn kinh tế đan xen",
+    "C": "Đất đai thuộc sở hữu toàn dân do Nhà nước thống nhất quản lý",
+    "D": "Đất đai thuộc quyền sở hữu tuyệt đối của những người trực tiếp canh tác",
+    "dap_an_dung": "C",
+    "id": "27"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Biện pháp cơ bản và lâu dài nhất để chặn đứng nạn tham nhũng được Đảng ta xác định đi đôi với xử lý nghiêm minh là gì?",
+    "A": "Xử lý kỷ luật ngay lập tức tất cả những người có biểu hiện tham nhũng",
+    "B": "Tiếp tục đổi mới cơ chế quản lý kinh tế xã hội một cách triệt để",
+    "C": "Cấm đảng viên và cán bộ tham gia điều hành quản lý kinh tế nhà nước",
+    "D": "Mời các chuyên gia nước ngoài trực tiếp quản lý thu chi ngân sách",
+    "dap_an_dung": "B",
+    "id": "28"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Chủ trương của Đảng ta về việc hội nhập kinh tế quốc tế và tham gia các định chế thương mại thế giới là gì?",
+    "A": "Tham gia một cách ồ ạt không cần chọn lọc để nhanh chóng thu hút vốn",
+    "B": "Chủ động tham gia có chọn lọc và với những bước đi thích hợp",
+    "C": "Đóng cửa thị trường nội địa để bảo hộ an toàn cho nền sản xuất trong nước",
+    "D": "Chỉ tham gia các tổ chức kinh tế thuộc khối các nước xã hội chủ nghĩa",
+    "dap_an_dung": "B",
+    "id": "29"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Theo Đảng ta, nguyên nhân chủ yếu nào gây ra tình trạng chia rẽ và bè phái làm mất đoàn kết nội bộ Đảng?",
+    "A": "Chủ nghĩa cá nhân và tư tưởng bản vị và tham vọng quyền lực",
+    "B": "Sự can thiệp và chống phá từ các thế lực thù địch ở nước ngoài",
+    "C": "Trình độ lý luận chính trị của đảng viên còn thấp kém và lạc hậu",
+    "D": "Sự khác biệt tất yếu về quan điểm trong quá trình đổi mới kinh tế",
+    "dap_an_dung": "A",
+    "id": "30"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Văn kiện nào được thông qua tại Hội nghị thành lập Đảng Cộng sản Việt Nam đầu năm 1930?",
+    "A": "Luận cương chính trị do đồng chí Trần Phú khởi thảo",
+    "B": "Chính cương vắn tắt và Sách lược vắn tắt do Nguyễn Ái Quốc soạn thảo",
+    "C": "Tuyên ngôn của Đảng Cộng sản Đông Dương",
+    "D": "Chương trình hành động của tổ chức Công hội đỏ",
+    "dap_an_dung": "B",
+    "id": "31"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Theo Cương lĩnh chính trị đầu tiên của Đảng, lực lượng cách mạng chủ yếu bao gồm những giai cấp và tầng lớp nào?",
+    "A": "Giai cấp công nhân, nông dân, tiểu tư sản và tư sản dân tộc",
+    "B": "Giai cấp công nhân, giai cấp nông dân và tầng lớp trí thức",
+    "C": "Giai cấp nông dân, tiểu tư sản và tầng lớp địa chủ yêu nước",
+    "D": "Giai cấp công nhân, binh lính và các đảng phái chính trị",
+    "dap_an_dung": "A",
+    "id": "32"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Luận cương chính trị (tháng 10/1930) xác định động lực chính của cách mạng Đông Dương là lực lượng nào?",
+    "A": "Giai cấp tư sản dân tộc và tầng lớp tiểu tư sản",
+    "B": "Giai cấp công nhân và tầng lớp trí thức yêu nước",
+    "C": "Giai cấp công nhân và giai cấp nông dân",
+    "D": "Giai cấp nông dân và tầng lớp địa chủ vừa và nhỏ",
+    "dap_an_dung": "C",
+    "id": "33"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Cao trào cách mạng 1930-1931 đã đạt đến đỉnh cao nhất với sự ra đời của chính quyền Xô viết ở địa phương nào?",
+    "A": "Khu vực Quảng Nam và Quảng Ngãi",
+    "B": "Khu vực Thái Bình và Nam Định",
+    "C": "Khu vực Sài Gòn và Gia Định",
+    "D": "Khu vực Nghệ An và Hà Tĩnh",
+    "dap_an_dung": "D",
+    "id": "34"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Tại Đại hội đại biểu lần thứ nhất của Đảng (tháng 3/1935), ai là người được bầu làm Tổng Bí thư?",
+    "A": "Đồng chí Trần Phú",
+    "B": "Đồng chí Lê Hồng Phong",
+    "C": "Đồng chí Nguyễn Văn Cừ",
+    "D": "Đồng chí Hà Huy Tập",
+    "dap_an_dung": "B",
+    "id": "35"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Trong phong trào dân chủ 1936-1939, Đảng ta chủ trương thành lập mặt trận rộng rãi có tên gọi là gì?",
+    "A": "Mặt trận Dân chủ Đông Dương",
+    "B": "Mặt trận Dân tộc giải phóng miền Nam",
+    "C": "Mặt trận Tổ quốc Việt Nam",
+    "D": "Mặt trận Việt Nam độc lập đồng minh",
+    "dap_an_dung": "A",
+    "id": "36"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Hội nghị Trung ương 8 (tháng 5/1941) đã xác định hình thái khởi nghĩa ở nước ta sẽ tiến triển theo phương thức nào?",
+    "A": "Tổng bãi công chính trị ở thành thị rồi lan ra nông thôn",
+    "B": "Đồng loạt nổ súng cướp chính quyền ở các đô thị lớn",
+    "C": "Đi từ khởi nghĩa từng phần tiến lên tổng khởi nghĩa",
+    "D": "Dùng quân chủ lực đánh bại lực lượng quân đội phát xít",
+    "dap_an_dung": "C",
+    "id": "37"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Tổ chức Mặt trận Việt Minh được thành lập vào thời gian nào nhằm tập hợp lực lượng toàn dân tộc?",
+    "A": "Tháng 11 năm 1939",
+    "B": "Tháng 5 năm 1941",
+    "C": "Tháng 12 năm 1944",
+    "D": "Tháng 3 năm 1945",
+    "dap_an_dung": "B",
+    "id": "38"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Sự kiện quốc tế nào đánh dấu thời cơ Tổng khởi nghĩa Tháng Tám năm 1945 ở Việt Nam đã chín muồi?",
+    "A": "Phát xít Đức đầu hàng lực lượng Hồng quân Liên Xô",
+    "B": "Quân đội Đồng minh đổ bộ vào khu vực Đông Dương",
+    "C": "Phát xít Nhật tuyên bố đầu hàng Đồng minh không điều kiện",
+    "D": "Chính phủ Pháp ký hiệp định đình chiến với phát xít Đức",
+    "dap_an_dung": "C",
+    "id": "39"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Bản Tuyên ngôn Độc lập khai sinh nước Việt Nam Dân chủ Cộng hòa được Chủ tịch Hồ Chí Minh đọc vào thời điểm nào?",
+    "A": "Ngày 19 tháng 8 năm 1945",
+    "B": "Ngày 2 tháng 9 năm 1945",
+    "C": "Ngày 23 tháng 9 năm 1945",
+    "D": "Ngày 6 tháng 1 năm 1946",
+    "dap_an_dung": "B",
+    "id": "40"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Chỉ thị Kháng chiến kiến quốc (tháng 11/1945) xác định kẻ thù chính của cách mạng Đông Dương lúc này là thế lực nào?",
+    "A": "Quân đội Trung Hoa dân quốc đang giải giáp quân Nhật",
+    "B": "Lực lượng phát xít Nhật đang chờ được giải giáp",
+    "C": "Thực dân Pháp đang có âm mưu xâm lược trở lại",
+    "D": "Đế quốc Mỹ đang tăng cường can thiệp vào Đông Dương",
+    "dap_an_dung": "C",
+    "id": "41"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Để giải quyết khó khăn cấp bách về tài chính sau Cách mạng Tháng Tám, Chính phủ đã phát động nhân dân tham gia phong trào gì?",
+    "A": "Xây dựng Quỹ Độc lập và Tuần lễ vàng",
+    "B": "Mua công trái quốc gia và đóng thuế nông nghiệp",
+    "C": "Thành lập ngân hàng quốc gia và phát hành tiền giấy",
+    "D": "Góp vốn xây dựng các hợp tác xã tín dụng nông thôn",
+    "dap_an_dung": "A",
+    "id": "42"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Cuộc Tổng tuyển cử đầu tiên bầu ra Quốc hội của nước Việt Nam Dân chủ Cộng hòa diễn ra vào ngày tháng năm nào?",
+    "A": "Ngày 2 tháng 9 năm 1945",
+    "B": "Ngày 6 tháng 1 năm 1946",
+    "C": "Ngày 2 tháng 3 năm 1946",
+    "D": "Ngày 19 tháng 12 năm 1946",
+    "dap_an_dung": "B",
+    "id": "43"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Hiệp định Sơ bộ ngày 6 tháng 3 năm 1946 được ký kết giữa đại diện của những chính phủ nào?",
+    "A": "Chính phủ Việt Nam Dân chủ Cộng hòa và Chính phủ Pháp",
+    "B": "Chính phủ Việt Nam Dân chủ Cộng hòa và Trung Hoa dân quốc",
+    "C": "Chính phủ Pháp và Chính phủ Trung Hoa dân quốc",
+    "D": "Chính phủ Việt Nam Dân chủ Cộng hòa và Chính phủ Anh",
+    "dap_an_dung": "A",
+    "id": "44"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Lời kêu gọi toàn quốc kháng chiến của Chủ tịch Hồ Chí Minh được phát đi vào thời điểm lịch sử nào?",
+    "A": "Ngày 20 tháng 11 năm 1946",
+    "B": "Ngày 19 tháng 12 năm 1946",
+    "C": "Ngày 22 tháng 12 năm 1946",
+    "D": "Ngày 13 tháng 3 năm 1947",
+    "dap_an_dung": "B",
+    "id": "45"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Đường lối kháng chiến chống thực dân Pháp của Đảng ta mang những tính chất cơ bản nào?",
+    "A": "Đánh nhanh thắng nhanh và dựa vào viện trợ quốc tế",
+    "B": "Tiến công thần tốc và kết hợp khởi nghĩa vũ trang",
+    "C": "Toàn dân, toàn diện, lâu dài và dựa vào sức mình là chính",
+    "D": "Tập trung lực lượng quân sự mạnh để tiêu diệt đầu não địch",
+    "dap_an_dung": "C",
+    "id": "46"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Chiến dịch nào của ta đã làm thất bại hoàn toàn âm mưu đánh nhanh thắng nhanh của thực dân Pháp trong năm 1947?",
+    "A": "Chiến dịch Biên giới Thu Đông",
+    "B": "Chiến dịch Việt Bắc Thu Đông",
+    "C": "Chiến dịch Thượng Lào",
+    "D": "Chiến dịch Hòa Bình",
+    "dap_an_dung": "B",
+    "id": "47"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Thắng lợi của Chiến dịch Biên giới Thu Đông năm 1950 đã mang lại kết quả chiến lược quan trọng nào cho quân ta?",
+    "A": "Kết thúc hoàn toàn cuộc kháng chiến chống thực dân Pháp",
+    "B": "Giành được thế chủ động chiến lược trên chiến trường chính Bắc Bộ",
+    "C": "Buộc chính phủ Pháp phải ký kết Hiệp định đình chiến",
+    "D": "Giải phóng hoàn toàn khu vực đồng bằng sông Hồng",
+    "dap_an_dung": "B",
+    "id": "48"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Đại hội đại biểu toàn quốc lần thứ II của Đảng (năm 1951) quyết định đưa Đảng ra hoạt động công khai với tên gọi mới là gì?",
+    "A": "Đảng Cộng sản Đông Dương",
+    "B": "Đảng Cộng sản Việt Nam",
+    "C": "Đảng Dân chủ Việt Nam",
+    "D": "Đảng Lao động Việt Nam",
+    "dap_an_dung": "D",
+    "id": "49"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Chiến dịch lịch sử Điện Biên Phủ năm 1954 diễn ra và giành thắng lợi trong khoảng thời gian bao nhiêu ngày đêm?",
+    "A": "45 ngày đêm",
+    "B": "50 ngày đêm",
+    "C": "56 ngày đêm",
+    "D": "60 ngày đêm",
+    "dap_an_dung": "C",
+    "id": "50"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Sau tháng 7 năm 1954, đặc điểm lớn nhất của cách mạng Việt Nam là gì?",
+    "A": "Cả nước cùng bước vào thời kỳ quá độ lên chủ nghĩa xã hội",
+    "B": "Đất nước tạm thời bị chia cắt làm hai miền với hai chế độ chính trị khác nhau",
+    "C": "Toàn bộ lãnh thổ đã được hoàn toàn giải phóng khỏi ách thống trị của đế quốc",
+    "D": "Miền Nam tiến hành cải cách ruộng đất và miền Bắc khôi phục kinh tế",
+    "dap_an_dung": "B",
+    "id": "51"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Hội nghị Trung ương 15 (tháng 1/1959) đã xác định con đường phát triển cơ bản của cách mạng miền Nam là gì?",
+    "A": "Sử dụng bạo lực cách mạng để đánh đổ chính quyền Mỹ và tay sai",
+    "B": "Sử dụng phương pháp đấu tranh hòa bình để yêu cầu tổng tuyển cử",
+    "C": "Trông chờ vào sự can thiệp và giúp đỡ của các nước xã hội chủ nghĩa",
+    "D": "Tổ chức các cuộc đàm phán chính trị để thành lập chính phủ liên hiệp",
+    "dap_an_dung": "A",
+    "id": "52"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Phong trào Đồng khởi (1959-1960) nổ ra mạnh mẽ nhất và tiêu biểu nhất ở địa phương nào tại miền Nam?",
+    "A": "Tỉnh Bến Tre",
+    "B": "Tỉnh Trà Vinh",
+    "C": "Tỉnh Tây Ninh",
+    "D": "Tỉnh Quảng Ngãi",
+    "dap_an_dung": "A",
+    "id": "53"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Mặt trận Dân tộc Giải phóng miền Nam Việt Nam được thành lập vào ngày tháng năm nào?",
+    "A": "Ngày 2 tháng 9 năm 1960",
+    "B": "Ngày 20 tháng 12 năm 1960",
+    "C": "Ngày 16 tháng 2 năm 1961",
+    "D": "Ngày 8 tháng 3 năm 1965",
+    "dap_an_dung": "B",
+    "id": "54"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Đại hội đại biểu toàn quốc lần thứ III của Đảng (năm 1960) đã bầu ai làm Bí thư thứ nhất Ban Chấp hành Trung ương?",
+    "A": "Đồng chí Hồ Chí Minh",
+    "B": "Đồng chí Lê Duẩn",
+    "C": "Đồng chí Trường Chinh",
+    "D": "Đồng chí Phạm Văn Đồng",
+    "dap_an_dung": "B",
+    "id": "55"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Chiến lược Chiến tranh đặc biệt của đế quốc Mỹ ở miền Nam Việt Nam dựa vào lực lượng tham chiến chủ yếu nào?",
+    "A": "Quân viễn chinh Mỹ",
+    "B": "Quân đội đánh thuê của các nước chư hầu",
+    "C": "Quân đội tay sai Sài Gòn",
+    "D": "Lực lượng không quân và hải quân Mỹ",
+    "dap_an_dung": "C",
+    "id": "56"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Chiến thắng nào của quân dân miền Nam năm 1963 đã báo hiệu sự phá sản tất yếu của chiến thuật trực thăng vận và thiết xa vận?",
+    "A": "Chiến thắng Bình Giã",
+    "B": "Chiến thắng Ấp Bắc",
+    "C": "Chiến thắng Ba Gia",
+    "D": "Chiến thắng Đồng Xoài",
+    "dap_an_dung": "B",
+    "id": "57"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Đặc trưng cơ bản nhất của chiến lược Chiến tranh cục bộ do đế quốc Mỹ tiến hành từ năm 1965 là gì?",
+    "A": "Sử dụng lính viễn chinh Mỹ làm lực lượng tham chiến chủ yếu",
+    "B": "Tăng cường viện trợ kinh tế để củng cố chính quyền Sài Gòn",
+    "C": "Rút dần quân Mỹ và giao lại chiến trường cho quân đội tay sai",
+    "D": "Chỉ sử dụng không quân để ném bom rải thảm ở miền Nam",
+    "dap_an_dung": "A",
+    "id": "58"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Cuộc Tổng tiến công và nổi dậy Xuân Mậu Thân 1968 đã buộc đế quốc Mỹ phải chấp nhận điều kiện gì mang tính bước ngoặt?",
+    "A": "Tuyên bố đầu hàng vô điều kiện quân giải phóng miền Nam",
+    "B": "Chấp nhận đàm phán tại Hội nghị Paris về chấm dứt chiến tranh",
+    "C": "Rút toàn bộ lực lượng quân viễn chinh Mỹ ngay lập tức",
+    "D": "Bồi thường toàn bộ thiệt hại chiến tranh cho Việt Nam",
+    "dap_an_dung": "B",
+    "id": "59"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Chiến dịch nào đã kết thúc thắng lợi cuộc Tổng tiến công và nổi dậy mùa Xuân năm 1975 giải phóng hoàn toàn miền Nam?",
+    "A": "Chiến dịch Tây Nguyên",
+    "B": "Chiến dịch Huế và Đà Nẵng",
+    "C": "Chiến dịch Đường 9 Nam Lào",
+    "D": "Chiến dịch Hồ Chí Minh",
+    "dap_an_dung": "D",
+    "id": "60"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Việc tạm thời duy trì tổ chức Việt Nam Cách mạng Thanh niên trước khi lập Đảng Cộng sản được giải thích mang tính chất gì ?",
+    "A": "Là một thủ đoạn làm việc tạm thời trong lúc chuyển tiếp",
+    "B": "Là chiến lược lâu dài để tập hợp thanh niên trí thức",
+    "C": "Là bước đệm tiến tới thành lập mặt trận dân chủ",
+    "D": "Là phương pháp đấu tranh hòa bình hợp pháp ở đô thị",
+    "dap_an_dung": "A",
+    "id": "61"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Tuyên ngôn của Đảng Cộng sản Đông Dương xác định giai cấp vô sản muốn nền chuyên chính vững bền thì nhất thiết phải liên hiệp với lực lượng nào để làm cách mạng xã hội ?",
+    "A": "Giai cấp tư sản dân tộc",
+    "B": "Giai cấp địa chủ yêu nước",
+    "C": "Tầng lớp tiểu tư sản",
+    "D": "Dân cày (dân quê nghèo)",
+    "dap_an_dung": "D",
+    "id": "62"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Trong Tuyên ngôn của Đảng Cộng sản Đông Dương, xã hội cộng sản chủ nghĩa được định nghĩa không phải là hình thái nào ?",
+    "A": "Không phải là xã hội không có giai cấp bóc lột",
+    "B": "Không phải là cộng tài hay đem tài sản chia đều",
+    "C": "Không phải là xã hội xóa bỏ chế độ tư hữu",
+    "D": "Không phải là xã hội tập thể hóa tư liệu sản xuất",
+    "dap_an_dung": "B",
+    "id": "63"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Trong giai đoạn tổng phản công của cuộc kháng chiến, phương châm chiến lược nào được xác định đóng vai trò chính ?",
+    "A": "Du kích chiến",
+    "B": "Vận động chiến",
+    "C": "Trận địa chiến",
+    "D": "Chiến tranh hầm hào",
+    "dap_an_dung": "B",
+    "id": "64"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Theo quan điểm chỉ đạo của Đảng, vấn đề then chốt của bước thứ nhất trong cải cách ruộng đất là gì ?",
+    "A": "Tịch thu toàn bộ ruộng đất của địa chủ",
+    "B": "Thành lập các hợp tác xã nông nghiệp",
+    "C": "Thực hiện giảm tô và giảm tức",
+    "D": "Thực hiện khẩu hiệu người cày có ruộng",
+    "dap_an_dung": "C",
+    "id": "65"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Đường lối trường kỳ kháng chiến và tự lực cánh sinh được Đảng ta xác định mang ý nghĩa cơ bản nào ?",
+    "A": "Dựa vào viện trợ của các nước xã hội chủ nghĩa",
+    "B": "Dựa vào sức lực của nhân dân để đánh giặc",
+    "C": "Sử dụng vũ khí thô sơ tự tạo để chiến đấu",
+    "D": "Tránh những trận giao chiến lớn với kẻ thù",
+    "dap_an_dung": "B",
+    "id": "66"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Giai đoạn cầm cự trong cuộc kháng chiến chống Pháp được Đảng ta xác định mang tính chất quan trọng nào ?",
+    "A": "Là giai đoạn chuẩn bị cho việc tổng phản công",
+    "B": "Là giai đoạn quyết định thắng lợi cuối cùng",
+    "C": "Là giai đoạn kết thúc hoàn toàn cuộc chiến",
+    "D": "Là giai đoạn rút lui để bảo toàn lực lượng",
+    "dap_an_dung": "A",
+    "id": "67"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Đảng ta cho rằng chuẩn bị thật đầy đủ cho tổng phản công sẽ mang lại kết quả như thế nào ?",
+    "A": "Giúp tránh hoàn toàn việc giao tranh bằng quân sự",
+    "B": "Kéo dài thời gian hòa hoãn vô thời hạn với địch",
+    "C": "Buộc đối phương tự nguyện rút quân lính về nước",
+    "D": "Thời giờ tổng phản công càng mau chóng và thuận lợi",
+    "dap_an_dung": "D",
+    "id": "68"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Việc điều chỉnh khu vực đóng quân giữa ta và Pháp sau Hội nghị Giơnevơ nhằm mục đích chủ yếu gì ?",
+    "A": "Để chia cắt lâu dài vùng lãnh thổ của đất nước",
+    "B": "Để thực hiện đình chiến và tổng tuyển cử tự do",
+    "C": "Để thành lập nhà nước liên bang tại Đông Dương",
+    "D": "Để nhượng bộ một phần lãnh thổ cho quân đội Pháp",
+    "dap_an_dung": "B",
+    "id": "69"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Lập trường của Đảng ta về việc thống nhất nước nhà sau khi lập lại hòa bình được dựa trên cơ sở nào ?",
+    "A": "Cơ sở dân chủ",
+    "B": "Cơ sở bạo lực vũ trang",
+    "C": "Cơ sở chia cắt lãnh thổ",
+    "D": "Cơ sở can thiệp quốc tế",
+    "dap_an_dung": "A",
+    "id": "70"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Trong Di chúc, Chủ tịch Hồ Chí Minh đã khẳng định niềm tin mãnh liệt nào về cuộc kháng chiến chống Mỹ cứu nước ?",
+    "A": "Sẽ phải kéo dài vô thời hạn vì địch quá mạnh",
+    "B": "Cần phải nhượng bộ để đạt được hòa bình nhanh",
+    "C": "Phải trông chờ hoàn toàn vào viện trợ quốc tế",
+    "D": "Dù khó khăn gian khổ nhất định sẽ hoàn toàn thắng lợi",
+    "dap_an_dung": "D",
+    "id": "71"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Theo Di chúc, Chủ tịch Hồ Chí Minh yêu cầu thi hài của mình được xử lý như thế nào để tốt cho vệ sinh và không tốn đất ?",
+    "A": "Xây dựng lăng tẩm to lớn để lưu giữ kỷ niệm",
+    "B": "Thực hiện hỏa táng rồi chia tro xương làm ba phần",
+    "C": "Chôn cất thi hài ngay tại quê nhà tỉnh Nghệ An",
+    "D": "Bảo quản thi hài lâu dài trong lồng kính cẩn thận",
+    "dap_an_dung": "B",
+    "id": "72"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Thắng lợi của sự kiện nào đã tạo ra bước ngoặt lịch sử làm đế quốc Mỹ phải xuống thang chiến tranh từ năm 1968 ?",
+    "A": "Chiến dịch lịch sử Điện Biên Phủ",
+    "B": "Cuộc Tổng tiến công và nổi dậy Tết Mậu Thân",
+    "C": "Chiến thắng vang dội tại Ấp Bắc",
+    "D": "Chiến thắng lịch sử tại Vạn Tường",
+    "dap_an_dung": "B",
+    "id": "73"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Trong chiến lược chống Mỹ, mặt trận nào được xác định là địa bàn chiến lược hết sức trọng yếu hiện nay cũng như về sau ?",
+    "A": "Vùng trung tâm thành thị",
+    "B": "Vùng hải đảo và ven biển",
+    "C": "Vùng nông thôn rộng lớn",
+    "D": "Vùng biên giới quốc gia",
+    "dap_an_dung": "C",
+    "id": "74"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Vùng rừng núi được Đảng ta xác định giữ vị trí chiến lược như thế nào trong kháng chiến chống Mỹ ?",
+    "A": "Là địa bàn tập trung công nghiệp",
+    "B": "Là căn cứ địa vững chắc của ta",
+    "C": "Là nơi chủ yếu đấu tranh ngoại giao",
+    "D": "Là khu vực phi quân sự tự do",
+    "dap_an_dung": "B",
+    "id": "75"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Những trận đánh nào được xem là đòn giáng mạnh vào quân viễn chinh Mỹ khi chúng vừa đổ bộ để thực hiện chiến tranh cục bộ ?",
+    "A": "Trận Điện Biên Phủ và Lai Châu",
+    "B": "Trận Núi Thành và Vạn Tường",
+    "C": "Trận Ấp Bắc và Bình Giã",
+    "D": "Trận Khe Sanh và Đường 9",
+    "dap_an_dung": "B",
+    "id": "76"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Nếu đế quốc Mỹ buộc phải đàm phán hòa hoãn do sa lầy trong chiến tranh, Đảng ta đánh giá sự kiện đó mang ý nghĩa gì ?",
+    "A": "Là một thất bại hoàn toàn của cách mạng Việt Nam",
+    "B": "Là bước thắng lợi từng phần rất quan trọng của ta",
+    "C": "Là sự nhượng bộ vô điều kiện của lực lượng giải phóng",
+    "D": "Là dấu hiệu kết thúc chiến tranh ngay lập tức",
+    "dap_an_dung": "B",
+    "id": "77"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Trong đường lối hợp tác hóa nông nghiệp, lực lượng nào được xác định là tầng lớp mà Đảng ta phải dựa hẳn vào ?",
+    "A": "Phú nông và địa chủ phong kiến",
+    "B": "Trung nông lớp trên khá giả",
+    "C": "Bần nông và trung nông lớp dưới",
+    "D": "Tư sản nông nghiệp và thương gia",
+    "dap_an_dung": "C",
+    "id": "78"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Theo văn kiện Đảng, nếu không đưa nông dân vào con đường hợp tác tập thể hóa sau khi chia ruộng đất, họ sẽ rẽ sang hướng nào ?",
+    "A": "Con đường tiến thẳng lên xã hội chủ nghĩa",
+    "B": "Con đường sản xuất cá thể tiến lên tư bản chủ nghĩa",
+    "C": "Con đường dân chủ tư sản kiểu mới độc lập",
+    "D": "Con đường kinh tế tự nhiên thuần túy tự cấp",
+    "dap_an_dung": "B",
+    "id": "79"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Sau khi giải phóng đồng bằng Bắc Bộ, trọng tâm công tác của Đảng ta có sự chuyển hướng mang ý nghĩa lịch sử như thế nào ?",
+    "A": "Chuyển hoàn toàn sang đấu tranh ngoại giao",
+    "B": "Chuyển trọng tâm từ nông thôn đến thành thị",
+    "C": "Chuyển toàn bộ lực lượng về vùng rừng núi",
+    "D": "Chuyển sang đấu tranh nghị trường công khai",
+    "dap_an_dung": "B",
+    "id": "80"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Du kích sau lưng địch là một hình thức đấu tranh tích cực nhằm đánh phá trực tiếp vào kế hoạch thâm độc nào của thực dân Pháp ?",
+    "A": "Kế hoạch đánh nhanh thắng nhanh trên toàn quốc",
+    "B": "Kế hoạch dùng người Việt đánh người Việt",
+    "C": "Kế hoạch thiết lập các ấp chiến lược kiên cố",
+    "D": "Kế hoạch dồn dân lập khu trù mật ở nông thôn",
+    "dap_an_dung": "B",
+    "id": "81"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Cuộc kháng chiến sắp chuyển sang giai đoạn thứ hai, phong trào nào được phát động rầm rộ để hướng năng lực quốc dân vào mục đích đó ?",
+    "A": "Phong trào diệt giặc dốt ở các địa phương",
+    "B": "Phong trào thi đua ái quốc trên toàn quốc",
+    "C": "Phong trào bình dân học vụ xóa nạn mù chữ",
+    "D": "Phong trào tuần lễ vàng quyên góp tài chính",
+    "dap_an_dung": "B",
+    "id": "82"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Chiến dịch Việt Bắc Thu Đông đã tạo ra bước ngoặt mở ra giai đoạn nào của cuộc kháng chiến chống thực dân Pháp ?",
+    "A": "Giai đoạn tiến hành tổng phản công toàn diện",
+    "B": "Giai đoạn tích cực cầm cự với lực lượng địch",
+    "C": "Giai đoạn khởi nghĩa từng phần giành chính quyền",
+    "D": "Giai đoạn phòng ngự chiến lược bảo toàn lực lượng",
+    "dap_an_dung": "B",
+    "id": "83"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Tại Đại hội đại biểu toàn quốc lần thứ III, mục tiêu chiến lược chung của cả miền Bắc và miền Nam được xác định là gì ?",
+    "A": "Xây dựng nền kinh tế tư bản chủ nghĩa mạnh mẽ",
+    "B": "Giải phóng miền Nam, hòa bình, thống nhất đất nước",
+    "C": "Đưa cả nước tiến lên nền sản xuất lớn hiện đại",
+    "D": "Mở rộng ảnh hưởng toàn diện ở bán đảo Đông Dương",
+    "dap_an_dung": "B",
+    "id": "84"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Vị trí và vai trò của cách mạng xã hội chủ nghĩa ở miền Bắc đối với sự phát triển của toàn bộ cách mạng Việt Nam là gì ?",
+    "A": "Giữ vai trò quyết định trực tiếp nhất",
+    "B": "Giữ vai trò hỗ trợ phụ trợ chiến lược",
+    "C": "Giữ vai trò quyết định nhất đối với toàn bộ",
+    "D": "Giữ vai trò trung gian trong đàm phán ngoại giao",
+    "dap_an_dung": "C",
+    "id": "85"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Vì sao nói Đảng ta đã có một chính sách mặt trận rất đúng đắn kể từ ngày thành lập đến nay ?",
+    "A": "Vì Đảng không bao giờ hợp tác với giai cấp nào khác",
+    "B": "Vì Đảng luôn biết vận dụng bạo lực vũ trang tuyệt đối",
+    "C": "Vì Đảng vạch rõ kẻ thù chính và tranh thủ đồng minh",
+    "D": "Vì Đảng chỉ tập trung lực lượng ở các thành phố lớn",
+    "dap_an_dung": "C",
+    "id": "86"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Phương châm nhất quán của ta đối với địch khi chúng dùng thủ đoạn phao tin đàm phán để làm ta cầu an sơ hở là gì ?",
+    "A": "Từ bỏ vũ trang để tham gia tổng tuyển cử tự do",
+    "B": "Lập tức cử phái đoàn đi thương lượng hòa bình",
+    "C": "Chấp nhận ngừng bắn đơn phương để tỏ thiện chí",
+    "D": "Ra sức kháng chiến cho đến thắng lợi hoàn toàn",
+    "dap_an_dung": "D",
+    "id": "87"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Trong quá trình chống âm mưu lấn chiếm và lập ấp chiến lược của địch, quần chúng nhân dân đã áp dụng hình thức đấu tranh chủ đạo nào ?",
+    "A": "Đấu tranh hai chân tại chỗ kết hợp bám trụ làng xã",
+    "B": "Tập trung toàn bộ lực lượng rút sâu vào rừng núi",
+    "C": "Chỉ đấu tranh ngoại giao trên các diễn đàn quốc tế",
+    "D": "Kêu gọi sự can thiệp trực tiếp của Liên hợp quốc",
+    "dap_an_dung": "A",
+    "id": "88"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Việc quần chúng căm tức đế quốc chủ nghĩa Pháp và sự bành trướng cách mệnh vận động ở Đông Dương sẽ sáng tạo ra điều kiện kiện gì ?",
+    "A": "Điều kiện cho một cuộc chiến tranh thế giới mới bùng nổ",
+    "B": "Những điều kiện giúp cho cuộc cách mệnh vận động phát khởi",
+    "C": "Sự thỏa hiệp hoàn toàn của giai cấp tư sản phản động",
+    "D": "Những điều kiện để thành lập nhà nước quân chủ lập hiến",
+    "dap_an_dung": "B",
+    "id": "89"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Cơ sở cốt lõi để Đảng ta khẳng định thời cơ giải phóng hoàn toàn miền Nam đã đến là do sự suy yếu của thế lực nào ?",
+    "A": "Sự sụp đổ của toàn bộ hệ thống tư bản chủ nghĩa",
+    "B": "Thế và lực của ngụy quân ngụy quyền đang xuống dốc",
+    "C": "Sự can thiệp mạnh mẽ của lực lượng gìn giữ hòa bình",
+    "D": "Phong trào phản chiến bùng nổ rộng khắp tại nước Mỹ",
+    "dap_an_dung": "B",
+    "id": "90"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Theo văn kiện Đảng, tổ chức nào được đề nghị thành lập để đoàn kết nhân dân chống chủ nghĩa phát xít và chiến tranh đế quốc?",
+    "A": "Mặt trận nhân dân phản đế toàn Đông Dương",
+    "B": "Mặt trận bình dân Đông Dương",
+    "C": "Mặt trận dân chủ hòa bình Đông Dương",
+    "D": "Mặt trận dân tộc giải phóng Đông Dương",
+    "dap_an_dung": "B",
+    "id": "91"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Theo quan điểm của Đảng, phương tiện cuối cùng và độc nhất để đánh đổ chủ nghĩa đế quốc Pháp ở Đông Dương là gì?",
+    "A": "Đàm phán hòa bình với chính phủ lập hiến Pháp",
+    "B": "Chiến thuật thống nhất các lực lượng cách mạng",
+    "C": "Sử dụng lực lượng vũ trang từ bên ngoài hỗ trợ",
+    "D": "Đợi sự suy yếu của hệ thống tư bản chủ nghĩa",
+    "dap_an_dung": "B",
+    "id": "92"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Để tránh cho quần chúng mắc phải ảo tưởng dân chủ của giai cấp tiểu tư sản, Đảng đã đề ra hình thức khẩu hiệu đặc biệt nào?",
+    "A": "Thành lập nước Việt Nam Dân chủ Cộng hòa",
+    "B": "Thành lập chính quyền Xô viết công nông binh",
+    "C": "Thiết lập chính phủ mặt trận nhân dân",
+    "D": "Thành lập chính phủ liên hiệp quốc gia",
+    "dap_an_dung": "C",
+    "id": "93"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Lực lượng nào đã lợi dụng tình hình để hô to lên rằng Mặt trận bình dân không còn nữa và đã chết rồi nhằm mục đích phá hoại?",
+    "A": "Bọn phản động và tay chân tờrốtkít",
+    "B": "Bọn tư sản mại bản thân đế quốc",
+    "C": "Bọn phong kiến địa chủ cường hào",
+    "D": "Bọn mật thám và lính lê dương Pháp",
+    "dap_an_dung": "A",
+    "id": "94"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Khi trở về sau chuyến đi gian nan bị thất lạc toàn bộ đồ đạc hành lý, tác giả bức thư gửi từ Diên An cho biết chỉ còn lại vật dụng gì?",
+    "A": "Một cuốn sổ tay ghi chép",
+    "B": "Một quyển từ điển",
+    "C": "Một bản đồ quân sự",
+    "D": "Một bộ quần áo cũ",
+    "dap_an_dung": "B",
+    "id": "95"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Theo văn kiện của Ban Trung ương, để hiểu rõ nguyện vọng của quần chúng thì Đảng phải thực hiện phương pháp công tác nào?",
+    "A": "Phải liên lạc mật thiết và lắng nghe tiếng nói của quần chúng",
+    "B": "Phải tổ chức các lớp huấn luyện lý luận chính trị cơ bản",
+    "C": "Phải sử dụng báo chí công khai để thăm dò dư luận xã hội",
+    "D": "Phải triệu tập đại hội đại biểu toàn quốc định kỳ hàng năm",
+    "dap_an_dung": "A",
+    "id": "96"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Theo Đảng ta, cuộc vận động tranh đấu trong vụ bắt thăm đi lính mang tính chất của nhiệm vụ gì?",
+    "A": "Nhiệm vụ đấu tranh chính trị đòi quyền tự do dân chủ",
+    "B": "Nhiệm vụ trong cuộc vận động chung về quân sự của Đảng",
+    "C": "Nhiệm vụ bảo vệ hòa bình và an ninh trên toàn cầu",
+    "D": "Nhiệm vụ xây dựng hệ thống hậu cần vững chắc cho cách mạng",
+    "dap_an_dung": "B",
+    "id": "97"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Ý kiến không tán thành đưa vấn đề lập Đảng ra bàn ở Đại hội Thanh niên do thiếu hoàn cảnh thuận lợi bị đánh giá mang tính chất gì?",
+    "A": "Là một ý kiến bảo thủ và giáo điều",
+    "B": "Là một ý kiến tiểu tư sản đầu cơ",
+    "C": "Là một ý kiến cực đoan và nóng vội",
+    "D": "Là một ý kiến cải lương thỏa hiệp",
+    "dap_an_dung": "B",
+    "id": "98"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Trong văn kiện kêu gọi đoàn kết chuẩn bị khởi nghĩa, cơ hội cho dân tộc ta giải phóng được dự báo chỉ ở trong khoảng thời gian bao lâu nữa?",
+    "A": "Trong một vài tháng hoặc nửa năm nữa",
+    "B": "Trong một năm hoặc năm rưỡi nữa",
+    "C": "Trong ba năm hoặc bốn năm sắp tới",
+    "D": "Trong vòng mười năm phát triển liên tục",
+    "dap_an_dung": "B",
+    "id": "99"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Từ nay đến ngày khởi nghĩa, vấn đề nào được Đảng ta xác định là cốt yếu và có tính chất quyết định tất cả?",
+    "A": "Vấn đề đào tạo và sử dụng cán bộ",
+    "B": "Vấn đề xây dựng căn cứ địa vững chắc",
+    "C": "Vấn đề mua sắm vũ khí và đạn dược",
+    "D": "Vấn đề đàm phán với lực lượng Đồng minh",
+    "dap_an_dung": "A",
+    "id": "100"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Khi bước vào vũ trang tranh đấu, Quân giải phóng được xác định mang bản chất là đội quân của ai?",
+    "A": "Là một đội quân của giai cấp vô sản quốc tế",
+    "B": "Là một đội quân của liên minh công nông binh",
+    "C": "Là một đội quân của nhân dân và của nước",
+    "D": "Là một đội quân của các đảng phái chính trị",
+    "dap_an_dung": "C",
+    "id": "101"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Khuyết điểm nào làm cho đoàn thể mất cán bộ, kém nhất trí và thường hỏng việc do tư tưởng người này không phục người khác?",
+    "A": "Chứng ảo tưởng dân chủ",
+    "B": "Chứng óc bè phái",
+    "C": "Bệnh quan liêu mệnh lệnh",
+    "D": "Bệnh hình thức phô trương",
+    "dap_an_dung": "B",
+    "id": "102"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Trong công tác địch vận, việc kêu gọi lính Pháp chạy sang hàng ngũ ta được giải thích bằng lý do mang tính chất yêu nước nào?",
+    "A": "Để họ được phong tước hiệu cao trong quân đội Việt Nam",
+    "B": "Để họ được bảo đảm an toàn tính mạng và trở nên giàu có",
+    "C": "Để họ được biệt đãi và về nước để cải tạo lại nước Pháp",
+    "D": "Để họ được tự do sinh sống lâu dài tại bán đảo Đông Dương",
+    "dap_an_dung": "C",
+    "id": "103"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Khi thực dân Pháp phao tin thành lập Mặt trận liên hiệp quốc gia ở Sài Gòn, mục đích chính của chúng đối với cách mạng ta là gì?",
+    "A": "Dọa Chính phủ ta phải nhận những điều kiện của chúng",
+    "B": "Kêu gọi lực lượng Đồng minh vào can thiệp trực tiếp",
+    "C": "Chuyển giao quyền lực hòa bình cho các tổ chức tôn giáo",
+    "D": "Làm suy yếu nền kinh tế của khu vực Nam Bộ tự do",
+    "dap_an_dung": "A",
+    "id": "104"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Nhân dân Việt Nam kiên quyết đánh mãi cho đến khi thực dân Pháp phàn động chịu thực hiện điều kiện gì?",
+    "A": "Đàm phán thẳng với Chính phủ Hồ Chí Minh một cách bình đẳng",
+    "B": "Rút toàn bộ lực lượng quân sự ra khỏi biên giới quốc gia",
+    "C": "Chấp nhận bồi thường toàn bộ thiệt hại về kinh tế do chiến tranh",
+    "D": "Giao lại toàn bộ vũ khí và trang thiết bị cho lực lượng tự vệ",
+    "dap_an_dung": "A",
+    "id": "105"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Theo sự phân tích của Chủ tịch Hồ Chí Minh, tỷ lệ giữa số lượng đảng viên và số lượng nhân dân được ước tính ở khoảng bao nhiêu?",
+    "A": "Mười người dân mới có một người đảng viên",
+    "B": "Năm mươi người dân mới có một người đảng viên",
+    "C": "Hàng trăm người dân mới có một người đảng viên",
+    "D": "Hàng nghìn người dân mới có một người đảng viên",
+    "dap_an_dung": "C",
+    "id": "106"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Trong phong trào thi đua ái quốc, hai ngành thi đua chính nào phải được đặt lên trên hết các ngành hoạt động khác?",
+    "A": "Xóa nạn mù chữ và thực hành tiết kiệm",
+    "B": "Tăng gia sản xuất và luyện quân lập công",
+    "C": "Giao thông vận tải và thông tin liên lạc",
+    "D": "Phát triển y tế và xây dựng đời sống mới",
+    "dap_an_dung": "B",
+    "id": "107"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Khẩu hiệu tuyên truyền nào được Đảng ta đưa ra khi quyết định hợp nhất hai tổ chức Việt Minh và Liên Việt?",
+    "A": "Một dân tộc một Mặt trận thống nhất",
+    "B": "Tất cả cho tiền tuyến tất cả để chiến thắng",
+    "C": "Toàn dân kháng chiến toàn diện kháng chiến",
+    "D": "Độc lập tự do hay là chết vinh quang",
+    "dap_an_dung": "A",
+    "id": "108"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Nguyên nhân chủ yếu nào được chỉ ra dẫn đến tình trạng chia rẽ nội bộ, kèn cựa địa vị trong các cơ quan đoàn thể?",
+    "A": "Do trình độ lý luận chính trị quá yếu kém",
+    "B": "Do cá nhân chủ nghĩa mà ra",
+    "C": "Do sự kích động của kẻ thù bên ngoài",
+    "D": "Do hoàn cảnh vật chất thiếu thốn gay gắt",
+    "dap_an_dung": "B",
+    "id": "109"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Để đảm bảo trật tự và sức mạnh đoàn kết tại địa phương, khi tiến hành mộ binh, bộ đội phải thực hiện quy tắc gì đầu tiên?",
+    "A": "Báo trước cho Uỷ ban kháng chiến hành chính và đoàn thể biết",
+    "B": "Thông báo công khai trên hệ thống báo chí và phát thanh",
+    "C": "Trưng dụng toàn bộ thanh niên trong độ tuổi nghĩa vụ quân sự",
+    "D": "Thu tiền đóng góp tự nguyện của nhân dân để trang bị vũ khí",
+    "dap_an_dung": "A",
+    "id": "110"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Trong báo cáo về tình hình ngụy quyền, lý do chính nào khiến cơ sở của ta ở các thành phố còn non và chưa nắm chắc được dân chúng?",
+    "A": "Vì ta tập trung toàn bộ lực lượng về các vùng rừng núi",
+    "B": "Vì địch hết sức củng cố và dụ dỗ dân chúng",
+    "C": "Vì nhân dân thành thị không có tinh thần yêu nước",
+    "D": "Vì điều kiện giao thông liên lạc bị cắt đứt hoàn toàn",
+    "dap_an_dung": "B",
+    "id": "111"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Trong bản Di chúc lịch sử, Chủ tịch Hồ Chí Minh đã yêu cầu xử lý thi hài của Người như thế nào để tốt cho vệ sinh và không tốn đất?",
+    "A": "Bảo quản lâu dài trong lăng tẩm bằng kính",
+    "B": "Thực hiện hỏa táng và chia tro làm ba phần",
+    "C": "Chôn cất đơn giản tại vùng quê hương Nghệ An",
+    "D": "Xây dựng đài tưởng niệm lớn ở trung tâm thủ đô",
+    "dap_an_dung": "B",
+    "id": "112"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Trong Di chúc, ý chí và niềm tin sắt đá nào đã được Chủ tịch Hồ Chí Minh khẳng định chắc chắn sẽ trở thành sự thật?",
+    "A": "Đế quốc Mỹ cút khỏi nước ta và Tổ quốc nhất định sẽ thống nhất",
+    "B": "Việt Nam sẽ trở thành quốc gia công nghiệp phát triển nhất châu Á",
+    "C": "Nền hòa bình thế giới sẽ được thiết lập vĩnh viễn không còn chiến tranh",
+    "D": "Hệ thống các nước xã hội chủ nghĩa sẽ mở rộng trên toàn cầu",
+    "dap_an_dung": "A",
+    "id": "113"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Theo quan điểm của Chủ tịch Hồ Chí Minh, người cách mạng nếu không có đạo đức cách mạng thì sẽ dẫn đến hậu quả gì?",
+    "A": "Sẽ không bao giờ được đề bạt lên các vị trí lãnh đạo cao cấp",
+    "B": "Dù có tài giỏi đến mấy cũng không lãnh đạo được nhân dân",
+    "C": "Sẽ dễ dàng bị mua chuộc bởi vật chất và tiền tài của kẻ thù",
+    "D": "Sẽ không thể hoàn thành tốt các chương trình học tập lý luận",
+    "dap_an_dung": "B",
+    "id": "114"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Trong quá trình thảo luận và xây dựng tổ chức, Đảng ta luôn khẳng định dứt khoát bản chất cốt lõi của Đảng Cộng sản Việt Nam là gì?",
+    "A": "Mang bản chất của phong trào giải phóng dân tộc",
+    "B": "Mang bản chất của giai cấp nông dân lao động nghèo",
+    "C": "Mang bản chất của giai cấp công nhân",
+    "D": "Mang bản chất của tầng lớp trí thức tiên tiến",
+    "dap_an_dung": "C",
+    "id": "115"
+  },
+  {
+    "cau_hoi_kho": false,
+    "noi_dung": "Sinh thời, Chủ tịch Hồ Chí Minh thường nhắc nhở về sức mạnh to lớn và vai trò quyết định của nhân dân bằng câu nói nổi tiếng nào?",
+    "A": "Đoàn kết đoàn kết đại đoàn kết thành công thành công đại thành công",
+    "B": "Dễ mười lần không dân cũng chịu khó vạn lần dân liệu cũng xong",
+    "C": "Không có gì quý hơn độc lập và tự do của tổ quốc Việt Nam",
+    "D": "Vì lợi ích mười năm thì phải trồng cây vì lợi ích trăm năm thì phải trồng người",
+    "dap_an_dung": "B",
+    "id": "116"
+  }
+]
