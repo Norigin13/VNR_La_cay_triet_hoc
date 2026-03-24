@@ -175,8 +175,11 @@ export function HistoryGameApp() {
 
   const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(null);
+  const [showAnswerOptions, setShowAnswerOptions] = useState(false);
   const [remainingMs, setRemainingMs] = useState(QUESTION_TIME_MS);
   const [selectedAnswer, setSelectedAnswer] = useState("");
+  const [wrongAnswers, setWrongAnswers] = useState(new Set());
+  const [isCorrectLocked, setIsCorrectLocked] = useState(false);
   const [usedLeafIds, setUsedLeafIds] = useState(new Set());
   const [showHelp, setShowHelp] = useState(false);
   const [showLeaderboard, setShowLeaderboard] = useState(false);
@@ -316,7 +319,7 @@ export function HistoryGameApp() {
   }, [showLeaderboard, leaderboardRefresh]);
 
   useEffect(() => {
-    if (!currentQuestion) return;
+    if (!currentQuestion || !showAnswerOptions) return;
     const start = performance.now();
     let raf = 0;
     const tick = (now) => {
@@ -329,18 +332,60 @@ export function HistoryGameApp() {
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
+  }, [currentQuestion, showAnswerOptions]);
+
+  useEffect(() => {
+    if (!currentQuestion) return;
+    const revealTimer = setTimeout(() => {
+      setShowAnswerOptions(true);
+    }, 3000);
+    return () => clearTimeout(revealTimer);
   }, [currentQuestion]);
+
+  useEffect(() => {
+    if (!currentQuestion || !showAnswerOptions || isCorrectLocked) return;
+    if (remainingMs > 0) return;
+    const correctAnswer = normalizeAnswerText(_ac.get(currentQuestion.id));
+    const matchedOption =
+      currentQuestion.options.find(
+        (opt) => normalizeAnswerText(opt) === correctAnswer
+      ) ?? currentQuestion.options[0];
+    queueMicrotask(() => {
+      setSelectedAnswer(matchedOption);
+      setWrongAnswers(new Set());
+      setIsCorrectLocked(true);
+    });
+  }, [currentQuestion, showAnswerOptions, isCorrectLocked, remainingMs]);
 
   function openQuestion(question) {
     if (usedLeafIds.has(question.id)) return;
+    setShowAnswerOptions(false);
     setRemainingMs(QUESTION_TIME_MS);
     setSelectedAnswer("");
+    setWrongAnswers(new Set());
+    setIsCorrectLocked(false);
     setCurrentQuestion(question);
   }
 
   function closeQuestion() {
     setCurrentQuestion(null);
+    setShowAnswerOptions(false);
     setSelectedAnswer("");
+    setWrongAnswers(new Set());
+    setIsCorrectLocked(false);
+  }
+
+  function handleNextQuestion() {
+    if (!currentQuestion || !isCorrectLocked) return;
+    setUsedLeafIds((prev) => {
+      const n = new Set(prev);
+      n.add(currentQuestion.id);
+      if (allQuestions.length > 0 && n.size >= allQuestions.length) {
+        queueMicrotask(() => setShowCongrats(true));
+      }
+      return n;
+    });
+    closeQuestion();
   }
 
   function handlePlayAgain() {
@@ -360,26 +405,24 @@ export function HistoryGameApp() {
 
   function handleSubmitAnswer(option) {
     if (!currentQuestion) return;
+    if (!showAnswerOptions) return;
     if (remainingMs <= 0) return;
+    if (isCorrectLocked) return;
     const correctAnswer = normalizeAnswerText(_ac.get(currentQuestion.id));
-    if (normalizeAnswerText(selectedAnswer) === correctAnswer) return;
-    setSelectedAnswer(option);
-    const isCorrect = normalizeAnswerText(option) === correctAnswer;
-    if (!isCorrect) return;
-    const base = currentQuestion.difficulty === "rare" ? 20 : 10;
-    if (isCorrect) {
-      setScore((s) => s + base);
+    const normalizedOption = normalizeAnswerText(option);
+    if (normalizedOption !== correctAnswer) {
+      setWrongAnswers((prev) => {
+        const n = new Set(prev);
+        n.add(normalizedOption);
+        return n;
+      });
+      return;
     }
-    setUsedLeafIds((prev) => {
-      const n = new Set(prev);
-      n.add(currentQuestion.id);
-      if (allQuestions.length > 0 && n.size >= allQuestions.length) {
-        queueMicrotask(() => setShowCongrats(true));
-      }
-      return n;
-    });
-    // Cho người chơi đủ thời gian nhìn thấy đáp án đúng/sai
-    setTimeout(closeQuestion, 1400);
+
+    setSelectedAnswer(option);
+    setIsCorrectLocked(true);
+    const base = currentQuestion.difficulty === "rare" ? 20 : 10;
+    setScore((s) => s + base);
   }
 
   const timeRatio = currentQuestion
@@ -584,39 +627,55 @@ export function HistoryGameApp() {
               </button>
             </div>
             <p className="tree-question-text">{currentQuestion.text}</p>
-            <div className="tree-timer-bar">
-              <div
-                className="tree-timer-fill"
-                style={{ width: `${timeRatio * 100}%` }}
-              />
-            </div>
-            <div className="tree-timer-label">Còn {displaySeconds}s</div>
-            <div className="tree-options">
-              {currentQuestion.options.map((opt) => {
-                const isSelected =
-                  normalizeAnswerText(selectedAnswer) ===
-                  normalizeAnswerText(opt);
-                const isCorrect =
-                  normalizeAnswerText(opt) ===
-                  normalizeAnswerText(_ac.get(currentQuestion.id));
-                let cls = "tree-option";
-                if (selectedAnswer) {
-                  if (isSelected && isCorrect) cls += " correct";
-                  else if (isSelected) cls += " wrong";
-                }
-                return (
+            {showAnswerOptions ? (
+              <>
+                <div className="tree-timer-bar">
+                  <div
+                    className="tree-timer-fill"
+                    style={{ width: `${timeRatio * 100}%` }}
+                  />
+                </div>
+                <div className="tree-timer-label">Còn {displaySeconds}s</div>
+                <div className="tree-options">
+                  {currentQuestion.options.map((opt) => {
+                    const normalizedOpt = normalizeAnswerText(opt);
+                    const isSelected =
+                      normalizeAnswerText(selectedAnswer) === normalizedOpt;
+                    const isCorrect =
+                      normalizedOpt ===
+                      normalizeAnswerText(_ac.get(currentQuestion.id));
+                    const isWrong = wrongAnswers.has(normalizedOpt);
+                    let cls = "tree-option";
+                    if (isCorrectLocked && isSelected && isCorrect) {
+                      cls += " correct";
+                    } else if (isWrong) {
+                      cls += " wrong";
+                    }
+                    return (
+                      <button
+                        key={opt}
+                        type="button"
+                        className={cls}
+                        onClick={() => handleSubmitAnswer(opt)}
+                        disabled={remainingMs <= 0 || isCorrectLocked}
+                      >
+                        {opt}
+                      </button>
+                    );
+                  })}
+                </div>
+                {isCorrectLocked && (
                   <button
-                    key={opt}
                     type="button"
-                    className={cls}
-                    onClick={() => handleSubmitAnswer(opt)}
-                    disabled={remainingMs <= 0}
+                    className="tree-button primary"
+                    style={{ marginTop: 14, width: "100%" }}
+                    onClick={handleNextQuestion}
                   >
-                    {opt}
+                    Tiếp theo
                   </button>
-                );
-              })}
-            </div>
+                )}
+              </>
+            ) : null}
           </div>
         </div>
       )}
