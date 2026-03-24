@@ -29,6 +29,12 @@ const _ac = (() => {
   };
 })();
 
+function normalizeAnswerText(v) {
+  return String(v ?? "")
+    .normalize("NFC")
+    .trim();
+}
+
 function transformApiQuestion(q, idPrefix = "") {
   if (!q || typeof q !== "object") return null;
   const opts =
@@ -355,8 +361,11 @@ export function HistoryGameApp() {
   function handleSubmitAnswer(option) {
     if (!currentQuestion) return;
     if (remainingMs <= 0) return;
+    const correctAnswer = normalizeAnswerText(_ac.get(currentQuestion.id));
+    if (normalizeAnswerText(selectedAnswer) === correctAnswer) return;
     setSelectedAnswer(option);
-    const isCorrect = option === _ac.get(currentQuestion.id);
+    const isCorrect = normalizeAnswerText(option) === correctAnswer;
+    if (!isCorrect) return;
     const base = currentQuestion.difficulty === "rare" ? 20 : 10;
     if (isCorrect) {
       setScore((s) => s + base);
@@ -369,7 +378,8 @@ export function HistoryGameApp() {
       }
       return n;
     });
-    setTimeout(closeQuestion, 800);
+    // Cho người chơi đủ thời gian nhìn thấy đáp án đúng/sai
+    setTimeout(closeQuestion, 1400);
   }
 
   const timeRatio = currentQuestion
@@ -583,11 +593,15 @@ export function HistoryGameApp() {
             <div className="tree-timer-label">Còn {displaySeconds}s</div>
             <div className="tree-options">
               {currentQuestion.options.map((opt) => {
-                const isSelected = selectedAnswer === opt;
-                const isCorrect = opt === _ac.get(currentQuestion.id);
+                const isSelected =
+                  normalizeAnswerText(selectedAnswer) ===
+                  normalizeAnswerText(opt);
+                const isCorrect =
+                  normalizeAnswerText(opt) ===
+                  normalizeAnswerText(_ac.get(currentQuestion.id));
                 let cls = "tree-option";
                 if (selectedAnswer) {
-                  if (isCorrect) cls += " correct";
+                  if (isSelected && isCorrect) cls += " correct";
                   else if (isSelected) cls += " wrong";
                 }
                 return (
@@ -596,7 +610,7 @@ export function HistoryGameApp() {
                     type="button"
                     className={cls}
                     onClick={() => handleSubmitAnswer(opt)}
-                    disabled={!!selectedAnswer || remainingMs <= 0}
+                    disabled={remainingMs <= 0}
                   >
                     {opt}
                   </button>
